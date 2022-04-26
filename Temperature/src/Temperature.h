@@ -9,7 +9,10 @@ class Temperature{
     Temperature(int pin);
     double getTemperature();
     double convertTemperature(double data){
-        return (((data)* 0.00488) - 0.5) / 0.01;
+        double degree = (data/1024.0) * 5.0;
+        degree -= .5;
+        degree *= 100;
+        return degree;
     }
 };
 
