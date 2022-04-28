@@ -1,9 +1,13 @@
 #include <Arduino.h>
+#include "Scheduler.h"
+
+Scheduler sched;
 
 void setup() {
-  // put your setup code here, to run once:
+  sched.init();
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  sched.schedule();
 }
