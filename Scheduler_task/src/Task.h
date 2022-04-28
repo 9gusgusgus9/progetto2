@@ -2,8 +2,10 @@
 #define __TASK__
 
 class Task {
+
     int myPeriod;
     int timeElapsed;
+    bool active;
 
 public:
     virtual void init(int period){
@@ -26,6 +28,15 @@ public:
             return false;
         }
     }
+
+    bool isActive(){
+        return this -> active;
+    }
+
+    void setActive(bool active){
+        this -> active = active;
+    }
+
 };
 
 #endif
