@@ -16,7 +16,7 @@ enum Product {
     CHOCOLATE
 };
 
-inline const char* ToString(Product prod){
+inline const char* toString(Product prod){
     switch(prod){
         case COFFE: return "Coffe";
         case THE: return "The";

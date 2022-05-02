@@ -1,5 +1,6 @@
 #include "CoffeDisplay.h"
 #include "Arduino.h"
+#include "Manifest.h"
 
 byte fullPin[8] = {
     B11111,
@@ -68,7 +69,8 @@ void CoffeDisplay::printAssistanceMessage(){
 }
 
 void CoffeDisplay::printProductReady(Product product){
-    printMessageCentered("", "Product ready", "take your " + ToString(product), "Thanks!");
+    String prod = toString(product);
+    printMessageCentered("", "Product ready", "take your " + prod, "Thanks!");
 }
 void CoffeDisplay::printTestMessage(){
     printMessageCentered("", "Test in progress", "please wait", "");
@@ -81,7 +83,8 @@ void CoffeDisplay::printTestMessage(){
 }
 
 void CoffeDisplay::printProductAndSugar(Product product, int sugar){
-    printMessageGiustify("Product:", ToString(product), "Sugar:", "");
+    String prod = toString(product);
+    printMessageGiustify("Product:", prod, "Sugar:", "");
     for(int cursor = 0; cursor < sugar; cursor++){
         display -> setCursor(cursor, 3);
         display -> write(0);
@@ -89,7 +92,8 @@ void CoffeDisplay::printProductAndSugar(Product product, int sugar){
 }
 
 void CoffeDisplay::printMakingProcess(Product product){
-    printMessageCentered("", "Preparing " + ToString(product), "", "");
+    String prod = toString(product);
+    printMessageCentered("", "Preparing " + prod, "", "");
     for(int cursor = 5; cursor < 15; cursor++){
         display -> setCursor(cursor, 2);
         display -> write(0);
