@@ -16,6 +16,18 @@ enum Product {
     CHOCOLATE
 };
 
+enum Status{
+    INIT,
+    MACHINE_READY,
+    PRODUCT_SUGAR_SELECTION,
+    MAKING_PROCESS,
+    PRODUCT_READY,
+    COME_BACK,
+    ASSISTANCE_MODE,
+    CHECK_TEST,
+    SLEEP_MODE
+};
+
 inline const char* toString(Product prod){
     switch(prod){
         case COFFE: return "Coffe";
@@ -31,6 +43,7 @@ class Manifest{
     int chocolateCounter = 0;
     Product lastSpilled;
     int sugar;
+    Status status = MACHINE_READY;
 
 public:
     Manifest();
@@ -41,6 +54,8 @@ public:
     Product getLastSpilled();
     void setSugar(int sugar);
     int getSugar();
+    Status getStatus();
+    void setStatus(Status status);
 };
 
 #endif

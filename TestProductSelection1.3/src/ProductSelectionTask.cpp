@@ -1,5 +1,6 @@
 #include "ProductSelectionTask.h"
 #include "ButtonImpl.h"
+#include "Arduino.h"
 
 ProductSelectionTask::ProductSelectionTask(Manifest* manifest){
     this -> manifest = manifest;
@@ -15,7 +16,7 @@ void ProductSelectionTask::init(int period, CoffeDisplay* display){
     this -> bDOWN = new ButtonImpl(BDOWN);
     this -> bMAKE = new ButtonImpl(BMAKE);
     this -> potSugar = new SugarPot(POT);
-    
+    this -> lastPress = millis();
 }
 
 void ProductSelectionTask::bUp(){
@@ -56,18 +57,34 @@ int ProductSelectionTask::sugarPot(){
 }
 
 void ProductSelectionTask::tick(){
-    if(this -> bUP -> isPressed()){
-        this -> bUp();
-    } else if(this -> bDOWN -> isPressed()){
-        this -> bDown();
-    } else if(this -> bMAKE -> isPressed()){
-        this -> bMake();
-    }
-    int actual = sugarPot();
-    if(sugar != actual){
-        sugar = actual;
-    }
-    if(isActive){
-        display -> printProductAndSugar(actualProduct, sugar);
+    if(manifest -> getStatus() == Status::PRODUCT_SUGAR_SELECTION){
+        if(this -> bUP -> isPressed()){
+            this -> lastPress = millis();
+            this -> bUp();
+        } else if(this -> bDOWN -> isPressed()){
+            this -> lastPress = millis();
+            this -> bDown();
+        } else if(this -> bMAKE -> isPressed()){
+            this -> lastPress = millis();
+            this -> bMake();
+        }
+        int actual = sugarPot();
+        if(sugar != actual){
+            this -> lastPress = millis();
+            sugar = actual;
+        }
+        if(millis() - lastPress > Tback){
+            isActive = false;
+            manifest -> setStatus(Status::MACHINE_READY);
+        }
+        if(isActive){
+            display -> printProductAndSugar(actualProduct, sugar);
+        }
+    } else if(manifest -> getStatus() == Status::MACHINE_READY){
+        if(this -> bUP -> isPressed() || this -> bDOWN -> isPressed() || this -> bMAKE -> isPressed()){
+            manifest -> setStatus(Status::PRODUCT_SUGAR_SELECTION);
+        } else {
+            display -> printReadyMessage();
+        }
     }
 }

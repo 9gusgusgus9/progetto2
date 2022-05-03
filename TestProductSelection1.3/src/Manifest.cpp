@@ -40,3 +40,11 @@ void Manifest::setSugar(int sugar){
 int Manifest::getSugar(){
     return this -> sugar;
 }
+
+Status Manifest::getStatus(){
+    return this -> status;
+}
+
+void Manifest::setStatus(Status status){
+    this -> status = status;
+}
