@@ -14,6 +14,7 @@ void ProductSelectionTask::init(int period, CoffeDisplay* display){
     this -> bUP = new ButtonImpl(BUP);
     this -> bDOWN = new ButtonImpl(BDOWN);
     this -> bMAKE = new ButtonImpl(BMAKE);
+    this -> potSugar = new SugarPot(POT);
     
 }
 
@@ -50,28 +51,8 @@ void ProductSelectionTask::bMake(){
     display -> printMakingProcess(actualProduct);
 }
 
-void ProductSelectionTask::sugarPot(int pot){
-    if(pot < 10){
-        sugar = 1;
-    } else if(pot < 20){
-        sugar = 2;
-    } else if(pot < 30){
-        sugar = 3;
-    } else if(pot < 40){
-        sugar = 4;
-    } else if(pot < 50){
-        sugar = 5;
-    } else if(pot < 60){
-        sugar = 6;
-    } else if(pot < 70){
-        sugar = 7;
-    } else if(pot < 80){
-        sugar = 8;
-    } else if(pot < 90){
-        sugar = 9;
-    } else if(pot < 100){
-        sugar = 10;
-    }
+int ProductSelectionTask::sugarPot(){
+    return this -> potSugar -> getSugarValue();
 }
 
 void ProductSelectionTask::tick(){
@@ -81,6 +62,10 @@ void ProductSelectionTask::tick(){
         this -> bDown();
     } else if(this -> bMAKE -> isPressed()){
         this -> bMake();
+    }
+    int actual = sugarPot();
+    if(sugar != actual){
+        sugar = actual;
     }
     if(isActive){
         display -> printProductAndSugar(actualProduct, sugar);

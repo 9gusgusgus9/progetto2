@@ -4,6 +4,7 @@
 #include "CoffeDisplay.h"
 #include "Manifest.h"
 #include "ButtonImpl.h"
+#include "SugarPot.h"
 
 class ProductSelectionTask: public Task{
     
@@ -15,7 +16,7 @@ public:
     void bUp();
     void bDown();
     void bMake();
-    void sugarPot(int pot);
+    int sugarPot();
     
 private:
     CoffeDisplay* display;
@@ -24,6 +25,7 @@ private:
     int sugar;
     bool isActive;
     ButtonImpl* bUP, *bDOWN, *bMAKE;
+    SugarPot* potSugar;
 };
 
 #endif

@@ -7,7 +7,7 @@
 #define BUP 4
 #define BDOWN 2
 #define BMAKE 3
-#define POT A0
+#define POT 14
 
 
 enum Product {
@@ -21,6 +21,7 @@ inline const char* toString(Product prod){
         case COFFE: return "Coffe";
         case THE: return "The";
         case CHOCOLATE: return "Chocolate";
+        default: return "";
     }
 }
 

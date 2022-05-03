@@ -1,8 +1,8 @@
 #include "ServoMotor.h"
 #include "Arduino.h"
-#include <Servo.h>
+#include "ServoTimer2.h"
 
-Servo servo;
+ServoTimer2 servo;
 
 ServoMotor::ServoMotor(int pin){
     this -> pin = pin;
