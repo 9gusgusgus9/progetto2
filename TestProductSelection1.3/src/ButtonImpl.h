@@ -1,7 +1,6 @@
 #ifndef __BUTTONIMPL__
 #define __BUTTONIMPL__
 
-
 class ButtonImpl{ 
 public: 
   ButtonImpl(int pin);
@@ -9,8 +8,7 @@ public:
 
 private:
   int pin;
-  /* for debouncing */
-  int lastEventTime;
+  int lastState;
 };
 
 #endif

@@ -2,23 +2,22 @@
 #include "Arduino.h"
 #include "Manifest.h"
 
-#define DEBOUNCING_TIME 30
-
 /* ----------------------- ButtonImpl --------------- */
 
 ButtonImpl::ButtonImpl(int pin){
   this->pin = pin;
-  pinMode(pin, INPUT);  
-  lastEventTime = millis();
+  pinMode(pin, INPUT);
+  lastState = LOW;
 } 
   
 bool ButtonImpl::isPressed(){
-  long curr = millis();
-  if (curr - lastEventTime > DEBOUNCING_TIME){
-    lastEventTime = curr;
-    return digitalRead(pin) == HIGH;
-  } else {
-    return false;
-  }
+    int curr = digitalRead(pin);
+    if(lastState == HIGH && curr == LOW){
+      lastState = curr;
+      return true;
+    } else {
+      lastState = curr;
+      return false;
+    }
 }
 

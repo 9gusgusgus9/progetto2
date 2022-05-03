@@ -4,7 +4,7 @@
 #define AVIABLE_COFFE 50
 #define AVIABLE_THE 50
 #define AVIABLE_CHOCOLATE 50
-#define BUP 1
+#define BUP 4
 #define BDOWN 2
 #define BMAKE 3
 #define POT A0
@@ -33,13 +33,13 @@ class Manifest{
 
 public:
     Manifest();
-    virtual bool coffeIsAviable() = 0;
-    virtual bool theIsAviable() = 0;
-    virtual bool chocolateIsAviable() = 0;
-    virtual void setLastSpilled(Product prod) = 0;
-    virtual Product getLastSpilled() = 0;
-    virtual void setSugar(int sugar) = 0;
-    virtual int getSugar() = 0;
+    bool coffeIsAviable();
+    bool theIsAviable();
+    bool chocolateIsAviable();
+    void setLastSpilled(Product prod);
+    Product getLastSpilled();
+    void setSugar(int sugar);
+    int getSugar();
 };
 
 #endif
