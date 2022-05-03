@@ -1,9 +1,24 @@
 #include <Arduino.h>
+#include "MakingProcessTask.h"
+#include "Scheduler.h"
+#include "CoffeDisplay.h"
+#include "Manifest.h"
+
+ServoMotor* schiavo;
+CoffeDisplay* display;
+Scheduler* scheduler;
+MakingProcessTask* task;
 
 void setup() {
-  // put your setup code here, to run once:
+  schiavo = new ServoMotor(SERVO);
+  display = new CoffeDisplay();
+  scheduler = new Scheduler();
+  task = new MakingProcessTask(schiavo, display);
+  scheduler -> init();
+  task -> init(100);
+  scheduler -> addTask(task);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  scheduler -> schedule();
 }
