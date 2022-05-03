@@ -85,7 +85,7 @@ void CoffeDisplay::printTestMessage(){
 void CoffeDisplay::printProductAndSugar(Product product, int sugar){
     String prod = toString(product);
     printMessageGiustify("Product:", prod, "Sugar:", "");
-    for(int cursor = 0; cursor < sugar; cursor++){
+    for(int cursor = 7; cursor < sugar + 7; cursor++){
         display -> setCursor(cursor, 3);
         display -> write(0);
     }

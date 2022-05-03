@@ -9,15 +9,17 @@ SugarPot::SugarPot(int pin){
 
 int SugarPot::getSugarValue(){
     int pot = getValue();
-    if(pot < 205){
+    if(pot < 170){
+        return 0;
+    } else if(pot < 340){
         return 1;
-    } else if(pot < 410){
+    } else if(pot < 510){
         return 2;
-    } else if(pot < 615){
+    } else if(pot < 680){
         return 3;
-    } else if(pot < 820){
+    } else if(pot < 850){
         return 4;
-    } else if(pot < 1024){
+    } else if(pot < 1204){
         return 5;
     }
 }
