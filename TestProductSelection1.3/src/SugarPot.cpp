@@ -19,7 +19,7 @@ int SugarPot::getSugarValue(){
         return 3;
     } else if(pot < 850){
         return 4;
-    } else if(pot < 1204){
+    } else {
         return 5;
     }
 }
