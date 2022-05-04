@@ -26,7 +26,7 @@ private:
     bool isActive;
     ButtonImpl* bUP, *bDOWN, *bMAKE;
     SugarPot* potSugar;
-    int lastPress;
+    unsigned long lastPress;
 };
 
 #endif
