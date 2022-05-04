@@ -51,6 +51,8 @@ void ProductSelectionTask::bDown(){
 
 void ProductSelectionTask::bMake(){
     this -> isActive = false;
+    manifest -> setLastSpilled(actualProduct);
+    manifest -> setSugar(sugar);
     manifest -> setStatus(Status::MAKING_PROCESS);
 }
 
