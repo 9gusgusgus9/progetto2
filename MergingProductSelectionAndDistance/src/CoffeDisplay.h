@@ -3,13 +3,25 @@
 #include <LiquidCrystal_I2C.h>
 #include "Manifest.h"
 
+enum LastPrint{
+    WELCOME,
+    READY,
+    ASSISTANCE,
+    P_READY,
+    TEST,
+    SELECT_COFFE,
+    SELECT_THE,
+    SELECT_CHOCOLATE,
+    MAKING
+};
+
 class CoffeDisplay{
     LiquidCrystal_I2C* display;
+    LastPrint lastPrint;
 
-    public:
+public:
 
     CoffeDisplay();
-    
     void printMessageGiustify(String first, String second, String third, String fourth);
     void printMessageCentered(String first, String second, String third, String fourth);
     void printWelcomeMessage();

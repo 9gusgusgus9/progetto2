@@ -17,7 +17,7 @@ void ProductSelectionTask::init(int period, CoffeDisplay* display){
     this -> bMAKE = new ButtonImpl(BMAKE);
     this -> potSugar = new SugarPot(POT);
     this -> lastPress = millis();
-    this -> status = 1;
+    this -> status = 0;
     this -> lastUpdateStatus = millis();
 }
 
@@ -98,7 +98,7 @@ void ProductSelectionTask::tick(){
         }
         if(status > MAX_STATUS){
             manifest -> setStatus(Status::PRODUCT_READY);
-            status = 1;
+            status = 0;
         }
     }
 }

@@ -69,34 +69,64 @@ void CoffeDisplay::printMessageCentered(String first, String second, String thir
 }
 
 void CoffeDisplay::printWelcomeMessage(){
-    printMessageCentered("", "Camera Caffe", "Welcome", "");
+    if(lastPrint != LastPrint::WELCOME){
+        printMessageCentered("", "Camera Caffe", "Welcome", "");
+        lastPrint = LastPrint::WELCOME;
+    }
+    
 }
 
 void CoffeDisplay::printReadyMessage(){
-    printMessageCentered("", "Machine ready", "press one button", "");
+    if(lastPrint != LastPrint::READY){
+        printMessageCentered("", "Machine ready", "press one button", "");
+        lastPrint = LastPrint::READY;
+    }
 }
 
 void CoffeDisplay::printAssistanceMessage(){
-    printMessageCentered("", "Assistance required", "manage with GUI", "");
+    if(lastPrint != LastPrint::ASSISTANCE){
+        printMessageCentered("", "Assistance required", "manage with GUI", "");
+        lastPrint = LastPrint::ASSISTANCE;
+    }
 }
 
 void CoffeDisplay::printProductReady(Product product){
-    String prod = toString(product);
-    printMessageCentered("", "Product ready", "take your " + prod, "Thanks!");
+    if(lastPrint != LastPrint::P_READY){
+        String prod = toString(product);
+        printMessageCentered("", "Product ready", "take your " + prod, "Thanks!");
+        lastPrint = LastPrint::P_READY;
+    }
 }
 void CoffeDisplay::printTestMessage(){
-    printMessageCentered("", "Test in progress", "please wait", "");
-    for(int cursor = 5; cursor < 15; cursor++){
-        display -> setCursor(cursor, 3);
-        display -> write(0);
-        delay(1000);
+    if(lastPrint != LastPrint::TEST){
+        printMessageCentered("", "Test in progress", "please wait", "");
+        for(int cursor = 5; cursor < 15; cursor++){
+            display -> setCursor(cursor, 3);
+            display -> write(0);
+            delay(1000);
+        }
+        lastPrint = LastPrint::TEST;
     }
-
 }
 
 void CoffeDisplay::printProductAndSugar(Product product, int sugar){
-    String prod = toString(product);
-    printMessageGiustify("Product:", prod, "Sugar:", "");
+    if((lastPrint != LastPrint::SELECT_COFFE && product == Product::COFFE)
+        || (lastPrint != LastPrint::SELECT_THE && product == Product::THE)
+        || (lastPrint != LastPrint::SELECT_CHOCOLATE && product == Product::CHOCOLATE)){
+            String prod = toString(product);
+            printMessageGiustify("Product:", prod, "Sugar:", "");
+            switch(product){
+                case Product::COFFE:
+                    lastPrint = LastPrint::SELECT_COFFE;
+                    break;
+                case Product::CHOCOLATE:
+                    lastPrint = LastPrint::SELECT_CHOCOLATE;
+                    break;
+                case Product::THE:
+                    lastPrint = LastPrint::SELECT_THE;
+                    break;
+            }
+    }
     int cursor;
     for(cursor = 10; cursor < sugar + 10; cursor++){
         display -> setCursor(cursor, 3);
@@ -110,7 +140,7 @@ void CoffeDisplay::printProductAndSugar(Product product, int sugar){
 
 void CoffeDisplay::printMakingProcess(Product product, int status){
     String prod = toString(product);
-    if(status == 1){
+    if(status == 0){
         printMessageCentered("", "Preparing " + prod, "", "");
     }
     display -> setCursor(status + 5, 2);
