@@ -6,14 +6,13 @@ ProductReadyTask::ProductReadyTask(Manifest* manifest){
 }
 
 void ProductReadyTask::init(int echo, int trig, int period, CoffeDisplay* display){
+    Task::init(period);
     this -> sensor = new Sensor(echo, trig);
     this -> isTheFirstRound = true;
-    this -> period = period;
     this -> display = display;
 }
 
 void ProductReadyTask::tick(){
-    Serial.println(sensor -> getDistance());
     if(this -> manifest -> getStatus() == Status::PRODUCT_READY){
         this -> display -> printProductReady(this -> manifest -> getLastSpilled());
         if(isTheFirstRound){

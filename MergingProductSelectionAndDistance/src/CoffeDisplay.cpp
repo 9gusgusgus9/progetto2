@@ -110,9 +110,9 @@ void CoffeDisplay::printProductAndSugar(Product product, int sugar){
 
 void CoffeDisplay::printMakingProcess(Product product, int status){
     String prod = toString(product);
-    printMessageCentered("", "Preparing " + prod, "", "");
-    for(int cursor = status + 5; cursor < 15; cursor++){
-        display -> setCursor(cursor, 2);
-        display -> write(0);
+    if(status == 1){
+        printMessageCentered("", "Preparing " + prod, "", "");
     }
+    display -> setCursor(status + 5, 2);
+    display -> write(0);
 }

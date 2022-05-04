@@ -95,7 +95,6 @@ void ProductSelectionTask::tick(){
         if(millis() - lastUpdateStatus > 1000){
             status++;
             lastUpdateStatus = millis();
-            Serial.println(status);
         }
         if(status > MAX_STATUS){
             manifest -> setStatus(Status::PRODUCT_READY);
