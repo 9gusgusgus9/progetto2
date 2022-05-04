@@ -49,7 +49,7 @@ void ProductSelectionTask::bDown(){
 
 void ProductSelectionTask::bMake(){
     this -> isActive = false;
-    display -> printMakingProcess(actualProduct);
+    manifest -> setStatus(Status::MAKING_PROCESS);
 }
 
 int ProductSelectionTask::sugarPot(){
@@ -83,8 +83,13 @@ void ProductSelectionTask::tick(){
     } else if(manifest -> getStatus() == Status::MACHINE_READY){
         if(this -> bUP -> isPressed() || this -> bDOWN -> isPressed() || this -> bMAKE -> isPressed()){
             manifest -> setStatus(Status::PRODUCT_SUGAR_SELECTION);
+            isActive = true;
+            this -> lastPress = millis();
         } else {
             display -> printReadyMessage();
         }
+    } else if(manifest -> getStatus() == Status::MAKING_PROCESS){
+        display -> printMakingProcess(actualProduct);
+        manifest -> setStatus(Status::MACHINE_READY);
     }
 }

@@ -13,13 +13,14 @@ CoffeDisplay* display;
 Manifest* manifest;
 
 void setup() {
+  Serial.begin(9600);
   manifest = new Manifest();
   psTask = new ProductSelectionTask(manifest);
   Serial.begin(9600);
   display = new CoffeDisplay();
   display -> printWelcomeMessage();
   psTask -> init(100, display);
-  sched.init(100);
+  sched.init();
   sched.addTask(psTask);
 }
 

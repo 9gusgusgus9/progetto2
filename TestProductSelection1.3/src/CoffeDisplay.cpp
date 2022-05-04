@@ -13,18 +13,30 @@ byte fullPin[8] = {
     B11111
 };
 
+byte squarePin[8] = {
+    B11111,
+    B10001,
+    B10001,
+    B10001,
+    B10001,
+    B10001,
+    B10001,
+    B11111,
+};
+
 CoffeDisplay::CoffeDisplay(){
     display = new LiquidCrystal_I2C(0x27, 20, 4);
     display -> init();
     display -> backlight();
     display -> createChar(0, fullPin);
+    display -> createChar(1, squarePin);
 }
 
 void CoffeDisplay::printMessageGiustify(String first, String second, String third, String fourth){
     display -> clear();
     display -> setCursor(0,0);
     display -> print(first);
-    display -> setCursor(0,1);
+    display -> setCursor(10,1);
     display -> print(second);
     display -> setCursor(0,2);
     display -> print(third);
@@ -85,9 +97,14 @@ void CoffeDisplay::printTestMessage(){
 void CoffeDisplay::printProductAndSugar(Product product, int sugar){
     String prod = toString(product);
     printMessageGiustify("Product:", prod, "Sugar:", "");
-    for(int cursor = 7; cursor < sugar + 7; cursor++){
+    int cursor;
+    for(cursor = 10; cursor < sugar + 10; cursor++){
         display -> setCursor(cursor, 3);
         display -> write(0);
+    }
+    for(; cursor < 15; cursor++){
+        display -> setCursor(cursor, 3);
+        display -> write(1);
     }
 }
 
