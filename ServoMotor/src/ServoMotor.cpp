@@ -1,8 +1,8 @@
 #include "ServoMotor.h"
 #include "Arduino.h"
-#include <Servo.h>
+#include "ServoTimer2.h"
 
-Servo servo;
+ServoTimer2 servo;
 
 ServoMotor::ServoMotor(int pin){
     this -> pin = pin;
@@ -11,12 +11,15 @@ ServoMotor::ServoMotor(int pin){
 
 void ServoMotor::moveTo(int degree){
     servo.write(degree);
-    delay(20);
 }
 
 void ServoMotor::goToStart(){
     servo.write(0);
-    delay(20);
+    delay(5000);
+    servo.write(90);
+    delay(5000);
+    servo.write(180);
+    delay(5000);
 }
 
 void ServoMotor::goToEnd(){
@@ -26,4 +29,16 @@ void ServoMotor::goToEnd(){
 
 int ServoMotor::getPosition(){
     return servo.read();
+}
+
+void ServoMotor::makeCoffe(){
+    for(int i = 0; i <= 220; i++){
+        servo.write(i);
+    }
+}
+
+void ServoMotor::turnBack(){
+    for(int i = 220; i >= 0; i--){
+        servo.write(i);
+    }
 }

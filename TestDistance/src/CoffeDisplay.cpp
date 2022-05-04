@@ -1,5 +1,6 @@
 #include "CoffeDisplay.h"
 #include "Arduino.h"
+#include "Manifest.h"
 
 byte fullPin[8] = {
     B11111,
@@ -12,18 +13,30 @@ byte fullPin[8] = {
     B11111
 };
 
+byte squarePin[8] = {
+    B11111,
+    B10001,
+    B10001,
+    B10001,
+    B10001,
+    B10001,
+    B10001,
+    B11111,
+};
+
 CoffeDisplay::CoffeDisplay(){
     display = new LiquidCrystal_I2C(0x27, 20, 4);
     display -> init();
     display -> backlight();
-    display->createChar(0, fullPin);
+    display -> createChar(0, fullPin);
+    display -> createChar(1, squarePin);
 }
 
 void CoffeDisplay::printMessageGiustify(String first, String second, String third, String fourth){
     display -> clear();
     display -> setCursor(0,0);
     display -> print(first);
-    display -> setCursor(0,1);
+    display -> setCursor(10,1);
     display -> print(second);
     display -> setCursor(0,2);
     display -> print(third);
@@ -67,8 +80,9 @@ void CoffeDisplay::printAssistanceMessage(){
     printMessageCentered("", "Assistance required", "manage with GUI", "");
 }
 
-void CoffeDisplay::printProductReady(String product){
-    printMessageCentered("", "Product ready", "take your " + product, "Thanks!");
+void CoffeDisplay::printProductReady(Product product){
+    String prod = toString(product);
+    printMessageCentered("", "Product ready", "take your " + prod, "Thanks!");
 }
 void CoffeDisplay::printTestMessage(){
     printMessageCentered("", "Test in progress", "please wait", "");
@@ -80,16 +94,23 @@ void CoffeDisplay::printTestMessage(){
 
 }
 
-void CoffeDisplay::printProductAndSugar(String product, int sugar){
-    printMessageGiustify("Product:", product, "Sugar:", "");
-    for(int cursor = 0; cursor < sugar; cursor++){
+void CoffeDisplay::printProductAndSugar(Product product, int sugar){
+    String prod = toString(product);
+    printMessageGiustify("Product:", prod, "Sugar:", "");
+    int cursor;
+    for(cursor = 10; cursor < sugar + 10; cursor++){
         display -> setCursor(cursor, 3);
         display -> write(0);
     }
+    for(; cursor < 15; cursor++){
+        display -> setCursor(cursor, 3);
+        display -> write(1);
+    }
 }
 
-void CoffeDisplay::printMakingProcess(String product){
-    printMessageCentered("", "Preparing " + product, "", "");
+void CoffeDisplay::printMakingProcess(Product product){
+    String prod = toString(product);
+    printMessageCentered("", "Preparing " + prod, "", "");
     for(int cursor = 5; cursor < 15; cursor++){
         display -> setCursor(cursor, 2);
         display -> write(0);

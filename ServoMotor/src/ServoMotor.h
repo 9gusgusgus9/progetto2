@@ -11,6 +11,8 @@ class ServoMotor{
     void goToStart();
     void goToEnd();
     int getPosition();
+    void makeCoffe();
+    void turnBack();
 };
 
 #endif
