@@ -4,7 +4,7 @@
 
 ServoMotor* motor;
 int i = 0;
-boolean increase = true;
+bool increase = true;
 int c = 0;
 
 void setup() {

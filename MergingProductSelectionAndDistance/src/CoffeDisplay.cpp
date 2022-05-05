@@ -30,6 +30,7 @@ CoffeDisplay::CoffeDisplay(){
     display -> backlight();
     display -> createChar(0, fullPin);
     display -> createChar(1, squarePin);
+    lastPrint = NONE;
 }
 
 void CoffeDisplay::printMessageGiustify(String first, String second, String third, String fourth){

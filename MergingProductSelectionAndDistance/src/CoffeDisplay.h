@@ -4,6 +4,7 @@
 #include "Manifest.h"
 
 enum LastPrint{
+    NONE,
     WELCOME,
     READY,
     ASSISTANCE,
