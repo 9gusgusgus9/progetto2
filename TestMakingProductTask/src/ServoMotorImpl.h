@@ -13,10 +13,11 @@ public:
   void setPosition(int angle);
   void off();
   int getPosition();
+  void goToZero();
     
 private:
   int pin; 
-  Servo motor; 
+  Servo motor;
 };
 
 #endif

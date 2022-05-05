@@ -9,6 +9,7 @@ void ProductSpillTask::init(int period, CoffeDisplay* display, ServoMotorImpl* s
     Task::init(period);
     this -> display = display;
     this -> servo = servo;
+    this -> servo -> on();
     this -> status = 0;
     this -> lastUpdateStatus = millis();
 }
@@ -23,6 +24,11 @@ void ProductSpillTask::tick(){
         }
     if(status > MAX_STATUS){
         manifest -> setStatus(Status::PRODUCT_READY);
+        servo -> on();
+        for(int i = 180; i > 0; i--){
+            servo -> setPosition(i);
+        }
+        servo -> off();
         status = 0;
     }
 }

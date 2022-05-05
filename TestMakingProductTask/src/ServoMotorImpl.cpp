@@ -6,11 +6,11 @@ ServoMotorImpl::ServoMotorImpl(int pin){
 } 
 
 void ServoMotorImpl::on(){
-  motor.attach(pin);    
+  motor.attach(pin);
 }
 
 void ServoMotorImpl::setPosition(int angle){
-  motor.write(angle);              
+  motor.write(angle); 
 }
 
 void ServoMotorImpl::off(){
@@ -19,4 +19,8 @@ void ServoMotorImpl::off(){
 
 int ServoMotorImpl::getPosition(){
   return motor.read();
+}
+
+void ServoMotorImpl::goToZero(){
+  motor.write(0);
 }

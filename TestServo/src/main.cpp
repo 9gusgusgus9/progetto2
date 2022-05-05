@@ -8,7 +8,7 @@ ServoMotorImpl* pMotor;
 
 void setup() {
   Serial.begin(9600);
-  pMotor = new ServoMotorImpl(6);
+  pMotor = new ServoMotorImpl(9);
   pos = 0;
   delta = 1;
 }
@@ -24,5 +24,5 @@ void loop() {
   pMotor->off();
   pos -= delta;
   delta = -delta;
-  delay(1000);
+  //delay(1000);
 }
