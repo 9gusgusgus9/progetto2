@@ -12,6 +12,7 @@ public:
   void on();
   void setPosition(int angle);
   void off();
+  int getPosition();
     
 private:
   int pin; 

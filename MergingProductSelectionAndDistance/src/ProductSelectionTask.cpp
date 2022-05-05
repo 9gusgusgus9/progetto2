@@ -16,6 +16,8 @@ void ProductSelectionTask::init(int period, CoffeDisplay* display){
     this -> bDOWN = new ButtonImpl(BDOWN);
     this -> bMAKE = new ButtonImpl(BMAKE);
     this -> potSugar = new SugarPot(POT);
+    this -> servo = new ServoMotorImpl(SERVO);
+    this -> servo -> on();
     this -> lastPress = millis();
     this -> status = 0;
     this -> lastUpdateStatus = millis();
@@ -90,12 +92,14 @@ void ProductSelectionTask::tick(){
             isActive = true;
             this -> lastPress = millis();
         } else {
+            
             display -> printReadyMessage();
         }
     } else if(manifest -> getStatus() == Status::MAKING_PROCESS){
         display -> printMakingProcess(actualProduct, status);
         if(millis() - lastUpdateStatus > 1000){
             status++;
+            servo -> setPosition(servo -> getPosition() + 18);
             lastUpdateStatus = millis();
         }
         if(status > MAX_STATUS){

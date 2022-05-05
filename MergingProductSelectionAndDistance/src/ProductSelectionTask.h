@@ -8,6 +8,7 @@
 #include "Manifest.h"
 #include "ButtonImpl.h"
 #include "SugarPot.h"
+#include "ServoMotorImpl.h"
 
 class ProductSelectionTask: public Task{
     
@@ -32,6 +33,7 @@ private:
     unsigned long lastPress;
     int status;
     unsigned long lastUpdateStatus;
+    ServoMotorImpl* servo;
 };
 
 #endif

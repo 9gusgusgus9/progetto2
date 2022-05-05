@@ -12,6 +12,7 @@
 #define POT 14
 #define ECHO 7
 #define TRIG 8
+#define SERVO 6
 
 
 
