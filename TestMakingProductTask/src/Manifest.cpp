@@ -1,6 +1,8 @@
 #include "Manifest.h"
 
-Manifest::Manifest(){}
+Manifest::Manifest(){
+    this -> servo = new ServoMotorImpl(SERVO);
+}
 
 bool Manifest::coffeIsAviable(){
     return AVIABLE_COFFE - this ->coffeCounter > 0;
@@ -47,4 +49,8 @@ Status Manifest::getStatus(){
 
 void Manifest::setStatus(Status status){
     this -> status = status;
+}
+
+ServoMotorImpl* Manifest::getServo(){
+    return this -> servo;
 }

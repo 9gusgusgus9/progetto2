@@ -5,11 +5,11 @@ ProductSpillTask::ProductSpillTask(Manifest* manifest){
     this -> manifest = manifest;
 }
 
-void ProductSpillTask::init(int period, CoffeDisplay* display, ServoMotorImpl* servo){
+void ProductSpillTask::init(int period, CoffeDisplay* display){
     Task::init(period);
     this -> display = display;
-    this -> servo = servo;
-    this -> servo -> on();
+    this -> manifest -> getServo() -> on();
+    this -> manifest -> getServo() -> setPosition(180);
     this -> status = 0;
     this -> lastUpdateStatus = millis();
 }
@@ -18,20 +18,23 @@ void ProductSpillTask::tick(){
     if(manifest -> getStatus() == Status::MAKING_PROCESS){
         display -> printMakingProcess(this -> manifest -> getLastSpilled(), status);
         if(millis() - lastUpdateStatus > 1000){
+            if(status == 0){
+                manifest -> getServo() -> on();
+            }
+            Serial.println(manifest -> getServo() -> getPosition());
             status++;
-            servo -> setPosition(servo -> getPosition() + 18);
+            if(manifest -> getServo() -> getPosition() > 0){
+                manifest -> getServo() -> setPosition(manifest -> getServo() -> getPosition() - 18);
+            }
             lastUpdateStatus = millis();
         }
-    if(status > MAX_STATUS){
-        manifest -> setStatus(Status::PRODUCT_READY);
-        servo -> on();
-        for(int i = 180; i > 0; i--){
-            servo -> setPosition(i);
+        if(status > MAX_STATUS){
+            manifest -> setStatus(Status::PRODUCT_READY);
+            manifest -> getServo() -> off();
+            Serial.println(manifest -> getServo() -> getPosition());
+            status = 0;
         }
-        servo -> off();
-        status = 0;
     }
-}
 }
 
 

@@ -12,13 +12,12 @@ class ProductSpillTask: public Task{
 
 public:
     ProductSpillTask(Manifest* manifest);
-    void init(int period, CoffeDisplay* display, ServoMotorImpl* servo);
+    void init(int period, CoffeDisplay* display);
     void tick();
 
 private:
     CoffeDisplay* display;
     Manifest* manifest;
-    ServoMotorImpl* servo;
     int status;
     unsigned long lastUpdateStatus;
 };

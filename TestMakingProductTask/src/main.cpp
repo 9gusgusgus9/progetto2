@@ -22,8 +22,7 @@ void setup() {
   prTask = new ProductReadyTask(manifest);
   spillTask = new ProductSpillTask(manifest);
   scheduler = new Scheduler();
-  servo = new ServoMotorImpl(SERVO);
-  spillTask -> init(100, display, servo);
+  spillTask -> init(100, display);
   psTask -> init(100, display);
   prTask -> init(ECHO, TRIG, 100, display);
   scheduler -> init();

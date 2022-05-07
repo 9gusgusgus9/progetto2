@@ -14,6 +14,7 @@
 #define TRIG 8
 #define SERVO 9
 
+#include "ServoMotorImpl.h"
 
 
 enum Product{
@@ -50,6 +51,7 @@ class Manifest{
     Product lastSpilled;
     int sugar;
     Status status = MACHINE_READY;
+    ServoMotorImpl* servo;
 
 public:
     Manifest();
@@ -62,6 +64,7 @@ public:
     int getSugar();
     Status getStatus();
     void setStatus(Status status);
+    ServoMotorImpl* getServo();
 };
 
 #endif
