@@ -4,9 +4,9 @@
 #define MAX_STATUS 10
 
 #include "Task.h"
-#include "Manifest.h"
-#include "CoffeDisplay.h"
-#include "ServoMotorImpl.h"
+#include "../utils/Manifest.h"
+#include "../manager/CoffeDisplay.h"
+#include "../manager/ServoMotorImpl.h"
 
 class ProductSpillTask: public Task{
 

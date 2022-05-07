@@ -1,7 +1,7 @@
 #ifndef __COFFE_DISPLAY__
 #define __COFFE_DISPLAY__
 #include <LiquidCrystal_I2C.h>
-#include "Manifest.h"
+#include "../utils/Manifest.h"
 
 enum LastPrint{
     NONE,

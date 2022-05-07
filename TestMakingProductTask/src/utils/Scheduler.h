@@ -2,7 +2,7 @@
 #define __SCHEDULER__
 
 #include "Timer.h"
-#include "Task.h"
+#include "../tasks/Task.h"
 
 #define MAX_TASK 10
 

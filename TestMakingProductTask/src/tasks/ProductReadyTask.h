@@ -1,9 +1,9 @@
 #ifndef __PRODUCT_READY__
 #define __PRODUCT_READY__
 #include "Task.h"
-#include "Sensor.h"
-#include "Manifest.h"
-#include "CoffeDisplay.h"
+#include "../manager/Sensor.h"
+#include "../utils/Manifest.h"
+#include "../manager/CoffeDisplay.h"
 
 class ProductReadyTask: public Task{
 

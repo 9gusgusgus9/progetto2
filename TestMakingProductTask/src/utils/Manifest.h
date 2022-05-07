@@ -14,7 +14,7 @@
 #define TRIG 8
 #define SERVO 9
 
-#include "ServoMotorImpl.h"
+#include "../manager/ServoMotorImpl.h"
 
 
 enum Product{

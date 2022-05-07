@@ -1,10 +1,10 @@
 #include <Arduino.h>
-#include "CoffeDisplay.h"
-#include "ProductReadyTask.h"
-#include "ProductSelectionTask.h"
-#include "Scheduler.h"
-#include "ProductSpillTask.h"
-#include "ServoMotorImpl.h"
+#include "manager/CoffeDisplay.h"
+#include "tasks/ProductReadyTask.h"
+#include "tasks/ProductSelectionTask.h"
+#include "utils/Scheduler.h"
+#include "tasks/ProductSpillTask.h"
+#include "manager/ServoMotorImpl.h"
 
 Manifest* manifest;
 CoffeDisplay* display;

@@ -1,5 +1,5 @@
 #include "SugarPot.h"
-#include "Manifest.h"
+#include "../utils/Manifest.h"
 #include "Arduino.h"
 
 SugarPot::SugarPot(int pin){

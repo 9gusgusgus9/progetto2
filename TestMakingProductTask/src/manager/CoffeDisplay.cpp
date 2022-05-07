@@ -1,6 +1,6 @@
 #include "CoffeDisplay.h"
 #include "Arduino.h"
-#include "Manifest.h"
+#include "../utils/Manifest.h"
 
 byte fullPin[8] = {
     B11111,

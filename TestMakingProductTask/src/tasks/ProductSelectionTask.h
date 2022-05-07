@@ -4,10 +4,10 @@
 #define MAX_STATUS 10
 
 #include "Task.h"
-#include "CoffeDisplay.h"
-#include "Manifest.h"
-#include "ButtonImpl.h"
-#include "SugarPot.h"
+#include "../manager/CoffeDisplay.h"
+#include "../utils/Manifest.h"
+#include "../manager/ButtonImpl.h"
+#include "../manager/SugarPot.h"
 
 class ProductSelectionTask: public Task{
     
