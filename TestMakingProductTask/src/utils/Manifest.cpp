@@ -2,6 +2,7 @@
 
 Manifest::Manifest(){
     this -> servo = new ServoMotorImpl(SERVO);
+    this -> display = new CoffeDisplay();
 }
 
 bool Manifest::coffeIsAviable(){
@@ -53,4 +54,7 @@ void Manifest::setStatus(Status status){
 
 ServoMotorImpl* Manifest::getServo(){
     return this -> servo;
+}
+CoffeDisplay* Manifest::getDisplay(){
+    return this -> display;
 }

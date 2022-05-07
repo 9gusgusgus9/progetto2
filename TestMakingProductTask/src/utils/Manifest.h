@@ -15,6 +15,7 @@
 #define SERVO 9
 
 #include "../manager/ServoMotorImpl.h"
+#include "../manager/CoffeDisplay.h"
 
 
 enum Product{
@@ -52,6 +53,7 @@ class Manifest{
     int sugar;
     Status status = MACHINE_READY;
     ServoMotorImpl* servo;
+    CoffeDisplay* display;
 
 public:
     Manifest();
@@ -65,6 +67,7 @@ public:
     Status getStatus();
     void setStatus(Status status);
     ServoMotorImpl* getServo();
+    CoffeDisplay* getDisplay();
 };
 
 #endif
