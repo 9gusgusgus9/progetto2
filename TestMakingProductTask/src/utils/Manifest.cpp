@@ -3,6 +3,7 @@
 Manifest::Manifest(){
     this -> servo = new ServoMotorImpl(SERVO);
     this -> display = new CoffeDisplay();
+    this -> sensor = new Sensor(ECHO, TRIG);
 }
 
 bool Manifest::coffeIsAviable(){
@@ -55,6 +56,11 @@ void Manifest::setStatus(Status status){
 ServoMotorImpl* Manifest::getServo(){
     return this -> servo;
 }
+
 CoffeDisplay* Manifest::getDisplay(){
     return this -> display;
+}
+
+Sensor* Manifest::getSensor(){
+    return this -> sensor;
 }

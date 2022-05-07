@@ -16,7 +16,7 @@
 
 #include "../manager/ServoMotorImpl.h"
 #include "../manager/CoffeDisplay.h"
-
+#include "../manager/Sensor.h"
 
 enum Product{
     COFFE,
@@ -54,6 +54,8 @@ class Manifest{
     Status status = MACHINE_READY;
     ServoMotorImpl* servo;
     CoffeDisplay* display;
+    Sensor* sensor;
+
 
 public:
     Manifest();
@@ -68,6 +70,7 @@ public:
     void setStatus(Status status);
     ServoMotorImpl* getServo();
     CoffeDisplay* getDisplay();
+    Sensor* getSensor();
 };
 
 #endif

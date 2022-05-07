@@ -6,11 +6,10 @@ ProductSelectionTask::ProductSelectionTask(Manifest* manifest){
     this -> manifest = manifest;
 }
 
-void ProductSelectionTask::init(int period, CoffeDisplay* display){
+void ProductSelectionTask::init(int period){
     Task::init(period);
     this -> actualProduct = COFFE;
     this -> sugar = 1;
-    this -> display = display;
     this -> isActive = true;
     this -> bUP = new ButtonImpl(BUP);
     this -> bDOWN = new ButtonImpl(BDOWN);
@@ -81,7 +80,7 @@ void ProductSelectionTask::tick(){
             manifest -> setStatus(Status::MACHINE_READY);
         }
         if(isActive){
-            display -> printProductAndSugar(actualProduct, sugar);
+            this-> manifest -> getDisplay() -> printProductAndSugar(actualProduct, sugar);
         }
     } else if(manifest -> getStatus() == Status::MACHINE_READY){
         if(this -> bUP -> isPressed() || this -> bDOWN -> isPressed() || this -> bMAKE -> isPressed()){
@@ -89,7 +88,7 @@ void ProductSelectionTask::tick(){
             isActive = true;
             this -> lastPress = millis();
         } else {
-            display -> printReadyMessage();
+            this-> manifest -> getDisplay() -> printReadyMessage();
         }
     }
 }
