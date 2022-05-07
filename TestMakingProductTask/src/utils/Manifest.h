@@ -15,13 +15,8 @@
 #define SERVO 9
 
 #include "../manager/ServoMotorImpl.h"
-
-
-enum Product{
-    COFFE,
-    THE,
-    CHOCOLATE
-};
+#include "../manager/CoffeDisplay.h"
+#include "../manager/Sensor.h"
 
 enum Status{
     INIT,
@@ -45,13 +40,16 @@ inline const char* toString(Product prod){
 }
 
 class Manifest{
+    CoffeDisplay* display;
     int coffeCounter = 0;
     int theCounter = 0;
     int chocolateCounter = 0;
     Product lastSpilled;
     int sugar;
-    Status status = MACHINE_READY;
+    Status status;
     ServoMotorImpl* servo;
+    Sensor* sensor;
+
 
 public:
     Manifest();
@@ -65,6 +63,8 @@ public:
     Status getStatus();
     void setStatus(Status status);
     ServoMotorImpl* getServo();
+    CoffeDisplay* getDisplay();
+    Sensor* getSensor();
 };
 
 #endif

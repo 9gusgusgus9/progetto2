@@ -5,6 +5,7 @@
 #include "utils/Scheduler.h"
 #include "tasks/ProductSpillTask.h"
 #include "manager/ServoMotorImpl.h"
+#include "tasks/WelcomeMessageTask.h"
 
 Manifest* manifest;
 CoffeDisplay* display;
@@ -13,6 +14,7 @@ ProductSelectionTask* psTask;
 ProductSpillTask* spillTask;
 Scheduler* scheduler;
 ServoMotorImpl* servo;
+WelcomeMessageTask* welcomeTask;
 
 void setup() {
   Serial.begin(9600);
@@ -21,11 +23,14 @@ void setup() {
   psTask = new ProductSelectionTask(manifest);
   prTask = new ProductReadyTask(manifest);
   spillTask = new ProductSpillTask(manifest);
+  welcomeTask = new WelcomeMessageTask(manifest);
   scheduler = new Scheduler();
-  spillTask -> init(100, display);
-  psTask -> init(100, display);
-  prTask -> init(ECHO, TRIG, 100, display);
+  welcomeTask -> init(100);
+  spillTask -> init(100);
+  psTask -> init(100);
+  prTask -> init(100);
   scheduler -> init();
+  scheduler -> addTask(welcomeTask);
   scheduler -> addTask(psTask);
   scheduler -> addTask(prTask);
   scheduler -> addTask(spillTask); 

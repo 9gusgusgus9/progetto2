@@ -14,7 +14,7 @@ class ProductSelectionTask: public Task{
     
 public:
     ProductSelectionTask(Manifest* manifest);
-    void init(int period, CoffeDisplay* display);
+    void init(int period);
     void tick();
     void bUp();
     void bDown();
@@ -22,7 +22,6 @@ public:
     int sugarPot();
     
 private:
-    CoffeDisplay* display;
     Manifest* manifest;
     Product actualProduct;
     int sugar;
