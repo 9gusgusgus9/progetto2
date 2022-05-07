@@ -8,11 +8,13 @@ class WelcomeMessageTask: public Task{
     
 public:
     WelcomeMessageTask(Manifest* manifest);
+
     void init(int period);
     void tick();
 private:
     Manifest* manifest;
     int startTime;
+
 };
 
 #endif
