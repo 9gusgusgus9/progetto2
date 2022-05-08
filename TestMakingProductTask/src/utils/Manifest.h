@@ -46,6 +46,7 @@ class Manifest{
     int chocolateCounter = 0;
     Product lastSpilled;
     int sugar;
+    bool testToSleep;
     Status status;
     ServoMotorImpl* servo;
     Sensor* sensor;
@@ -64,6 +65,7 @@ public:
     ServoMotorImpl* getServo();
     CoffeDisplay* getDisplay();
     Sensor* getSensor();
+    bool isTestBeforeSleep();
 };
 
 #endif

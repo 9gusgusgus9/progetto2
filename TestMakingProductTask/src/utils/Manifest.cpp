@@ -68,3 +68,7 @@ CoffeDisplay* Manifest::getDisplay(){
 Sensor* Manifest::getSensor(){
     return this -> sensor;
 }
+
+bool Manifest::isTestBeforeSleep(){
+    return this -> testToSleep;
+}
