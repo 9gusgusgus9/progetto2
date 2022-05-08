@@ -1,7 +1,7 @@
 #ifndef __MAKING_PRODUCT__
 #define __MAKING_PRODUCT__
 
-#define MAX_STATUS 10
+#define MAX_STATUS 20
 
 #include "Task.h"
 #include "../utils/Manifest.h"

@@ -1,12 +1,7 @@
 #ifndef __COFFE_DISPLAY__
 #define __COFFE_DISPLAY__
 #include <LiquidCrystal_I2C.h>
-
-enum Product{
-    COFFE,
-    THE,
-    CHOCOLATE
-};
+#include "../utils/Product.h"
 
 enum LastPrint{
     NONE,

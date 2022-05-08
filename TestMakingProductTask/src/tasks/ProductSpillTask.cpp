@@ -15,15 +15,15 @@ void ProductSpillTask::init(int period){
 
 void ProductSpillTask::tick(){
     if(manifest -> getStatus() == Status::MAKING_PROCESS){
-        manifest -> getDisplay() -> printMakingProcess(this -> manifest -> getLastSpilled(), status);
-        if(millis() - lastUpdateStatus > 1000){
+        manifest -> getDisplay() -> printMakingProcess(this -> manifest -> getLastSpilled(), status/2);
+        if(millis() - lastUpdateStatus > 500){
             if(status == 0){
                 manifest -> getServo() -> on();
             }
             Serial.println(manifest -> getServo() -> getPosition());
             status++;
             if(manifest -> getServo() -> getPosition() > 0){
-                manifest -> getServo() -> setPosition(manifest -> getServo() -> getPosition() - 18);
+                manifest -> getServo() -> setPosition(manifest -> getServo() -> getPosition() - 9);
             }
             lastUpdateStatus = millis();
         }
