@@ -7,16 +7,19 @@ Manifest::Manifest(){
     this -> status = INIT;
 }
 
-bool Manifest::coffeIsAviable(){
-    return AVIABLE_COFFE - this ->coffeCounter > 0;
+bool Manifest::isAvailable(Product product){
+    switch(product){
+        case COFFE:
+            return AVIABLE_COFFE - coffeCounter > 0;
+        case THE:
+            return AVIABLE_THE - theCounter > 0;
+        case CHOCOLATE:
+            return AVIABLE_CHOCOLATE - chocolateCounter > 0;
+    }
 }
 
-bool Manifest::theIsAviable(){
-    return AVIABLE_THE - this ->theCounter > 0;
-}
-
-bool Manifest::chocolateIsAviable(){
-    return AVIABLE_CHOCOLATE - this ->chocolateCounter > 0;
+bool Manifest::someProductAvailable(){
+    return isAvailable(COFFE) || isAvailable(THE) || isAvailable(CHOCOLATE);
 }
 
 void Manifest::setLastSpilled(Product product){

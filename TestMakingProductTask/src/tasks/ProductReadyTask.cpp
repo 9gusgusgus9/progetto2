@@ -12,6 +12,7 @@ void ProductReadyTask::init(int period){
 
 void ProductReadyTask::tick(){
     if(this -> manifest -> getStatus() == Status::PRODUCT_READY){
+
         this -> manifest -> getDisplay() -> printProductReady(this -> manifest -> getLastSpilled());
         if(isTheFirstRound){
             isTheFirstRound = false;
@@ -21,7 +22,12 @@ void ProductReadyTask::tick(){
             isTheFirstRound = true;
             this -> manifest -> getServo() -> on();
             this -> manifest -> getServo() -> setPosition(180);
-            this -> manifest -> setStatus(Status::MACHINE_READY);
+            if(this -> manifest -> someProductAvailable()){
+                this -> manifest -> setStatus(Status::MACHINE_READY);
+            } else {
+                this -> manifest -> setStatus(Status::ASSISTANCE_MODE);
+            }
+            
         }
     }
 }

@@ -3,9 +3,9 @@
 
 #define Tback 5000
 #define TtoTake 40000
-#define AVIABLE_COFFE 50
-#define AVIABLE_THE 50
-#define AVIABLE_CHOCOLATE 50
+#define AVIABLE_COFFE 2
+#define AVIABLE_THE 2
+#define AVIABLE_CHOCOLATE 2
 #define BUP 4
 #define BDOWN 2
 #define BMAKE 3
@@ -53,9 +53,8 @@ class Manifest{
 
 public:
     Manifest();
-    bool coffeIsAviable();
-    bool theIsAviable();
-    bool chocolateIsAviable();
+    bool isAvailable(Product prod);
+    bool someProductAvailable();
     void setLastSpilled(Product prod);
     Product getLastSpilled();
     void setSugar(int sugar);

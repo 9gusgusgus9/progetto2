@@ -5,8 +5,6 @@
 
 #include "Task.h"
 #include "../utils/Manifest.h"
-#include "../manager/CoffeDisplay.h"
-#include "../manager/ServoMotorImpl.h"
 
 class ProductSpillTask: public Task{
 

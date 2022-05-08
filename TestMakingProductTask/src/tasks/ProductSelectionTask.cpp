@@ -31,6 +31,11 @@ void ProductSelectionTask::bUp(){
             actualProduct = THE;
             break;
     }
+    if(!this -> manifest -> isAvailable(actualProduct)){
+        if(this -> manifest -> someProductAvailable()){
+            this -> bUp();
+        }
+    }
 }
 
 void ProductSelectionTask::bDown(){
@@ -45,11 +50,21 @@ void ProductSelectionTask::bDown(){
             actualProduct = COFFE;
             break;
     }
+    if(!this -> manifest -> isAvailable(actualProduct)){
+        if(this -> manifest -> someProductAvailable()){
+            this -> bDown();
+        }
+    }
 }
 
 void ProductSelectionTask::bMake(){
     this -> isActive = false;
     manifest -> setLastSpilled(actualProduct);
+    if(!this -> manifest -> isAvailable(actualProduct)){
+        if(this -> manifest -> someProductAvailable()){
+            this -> bDown();
+        }
+    }
     manifest -> setSugar(sugar);
     manifest -> setStatus(Status::MAKING_PROCESS);
 }
