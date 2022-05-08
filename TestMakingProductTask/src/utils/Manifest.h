@@ -48,7 +48,6 @@ class Manifest{
     int sugar;
     Status status;
     ServoMotorImpl* servo;
-    CoffeDisplay* display;
     Sensor* sensor;
 
 
