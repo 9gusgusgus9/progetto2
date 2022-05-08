@@ -4,6 +4,7 @@ Manifest::Manifest(){
     this -> servo = new ServoMotorImpl(SERVO);
     this -> display = new CoffeDisplay();
     this -> sensor = new Sensor(ECHO, TRIG);
+    this -> temperature = new Temperature(TEMP);
     this -> status = INIT;
 }
 
@@ -71,4 +72,16 @@ Sensor* Manifest::getSensor(){
 
 bool Manifest::isTestBeforeSleep(){
     return this -> testToSleep;
+}
+
+double Manifest::getTemperature(){
+    return this -> temperature -> getTemperature();
+}
+
+bool Manifest::timeToTest(){
+    return this -> isTimeToTest;
+}
+
+void Manifest::setTimeToTest(bool value){
+    this -> isTimeToTest = value;
 }

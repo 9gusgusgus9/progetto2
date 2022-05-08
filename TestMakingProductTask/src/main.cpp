@@ -7,6 +7,7 @@
 #include "manager/ServoMotorImpl.h"
 #include "tasks/WelcomeMessageTask.h"
 #include "tasks/AssistanceModeTask.h"
+#include "tasks/SelfTestTask.h"
 
 Manifest* manifest;
 CoffeDisplay* display;
@@ -17,6 +18,8 @@ Scheduler* scheduler;
 ServoMotorImpl* servo;
 WelcomeMessageTask* welcomeTask;
 AssistanceModeTask* assTask;
+SelfTestTask* testTask;
+
 
 void setup() {
   Serial.begin(9600);
@@ -27,18 +30,21 @@ void setup() {
   spillTask = new ProductSpillTask(manifest);
   welcomeTask = new WelcomeMessageTask(manifest);
   assTask = new AssistanceModeTask(manifest);
+  testTask = new SelfTestTask(manifest);
   scheduler = new Scheduler();
   welcomeTask -> init(100);
   spillTask -> init(100);
   psTask -> init(100);
   prTask -> init(100);
   assTask -> init(100);
+  testTask -> init(1000);
   scheduler -> init();
   scheduler -> addTask(welcomeTask);
   scheduler -> addTask(psTask);
   scheduler -> addTask(prTask);
   scheduler -> addTask(spillTask);
-  scheduler -> addTask(assTask); 
+  scheduler -> addTask(assTask);
+  scheduler -> addTask(testTask);
 }
 
 void loop() {

@@ -3,6 +3,9 @@
 
 #define Tback 5000
 #define TtoTake 40000
+#define TtoTest 180000
+#define T_MAX 24.0
+#define T_MIN 17.0
 #define AVIABLE_COFFE 2
 #define AVIABLE_THE 2
 #define AVIABLE_CHOCOLATE 2
@@ -13,10 +16,12 @@
 #define ECHO 7
 #define TRIG 8
 #define SERVO 9
+#define TEMP 15
 
 #include "../manager/ServoMotorImpl.h"
 #include "../manager/CoffeDisplay.h"
 #include "../manager/Sensor.h"
+#include "../manager/Temperature.h"
 
 enum Status{
     INIT,
@@ -50,6 +55,8 @@ class Manifest{
     Status status;
     ServoMotorImpl* servo;
     Sensor* sensor;
+    Temperature* temperature;
+    bool isTimeToTest;
 
 
 public:
@@ -66,6 +73,9 @@ public:
     CoffeDisplay* getDisplay();
     Sensor* getSensor();
     bool isTestBeforeSleep();
+    double getTemperature();
+    bool timeToTest();
+    void setTimeToTest(bool value);
 };
 
 #endif

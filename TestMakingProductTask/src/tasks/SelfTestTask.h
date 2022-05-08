@@ -15,6 +15,8 @@ private:
     bool isTesting;
     bool passedTest;
     bool isTested;
+    bool isTimeToTest;
+    unsigned long lastTest;
 };
 
 #endif
