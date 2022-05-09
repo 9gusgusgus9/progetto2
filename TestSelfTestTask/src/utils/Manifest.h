@@ -58,6 +58,7 @@ class Manifest{
     Sensor* sensor;
     Temperature* temperature;
     bool isTimeToTest;
+    int testCounter;
 
 
 public:

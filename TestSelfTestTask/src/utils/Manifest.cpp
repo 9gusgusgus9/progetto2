@@ -7,6 +7,7 @@ Manifest::Manifest(){
     this -> temperature = new Temperature(TEMP);
     this -> status = INIT;
     this -> testToSleep = false;
+    this -> testCounter = 0;
 }
 
 bool Manifest::isAvailable(Product product){
@@ -17,6 +18,8 @@ bool Manifest::isAvailable(Product product){
             return AVIABLE_THE - theCounter > 0;
         case CHOCOLATE:
             return AVIABLE_CHOCOLATE - chocolateCounter > 0;
+        default: 
+            return true;
     }
 }
 
@@ -84,5 +87,8 @@ bool Manifest::timeToTest(){
 }
 
 void Manifest::setTimeToTest(bool value){
+    if(value){
+        testCounter++;
+    }
     this -> isTimeToTest = value;
 }
