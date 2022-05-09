@@ -15,6 +15,7 @@ void ProductSpillTask::init(int period){
 
 void ProductSpillTask::tick(){
     if(manifest -> getStatus() == Status::MAKING_PROCESS){
+        this -> manifest -> detection();
         manifest -> getDisplay() -> printMakingProcess(this -> manifest -> getLastSpilled(), status/2);
         if(millis() - lastUpdateStatus > 500){
             if(status == 0){
@@ -29,6 +30,7 @@ void ProductSpillTask::tick(){
             lastUpdateStatus = millis();
         }
         if(status > STATUS_MAX){
+            this -> manifest -> detection();
             manifest -> setStatus(Status::PRODUCT_READY);
             manifest -> getServo() -> off();
             Serial.println(manifest -> getServo() -> getPosition());

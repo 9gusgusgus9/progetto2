@@ -12,7 +12,6 @@ void ProductReadyTask::init(int period){
 
 void ProductReadyTask::tick(){
     if(this -> manifest -> getStatus() == Status::PRODUCT_READY){
-
         this -> manifest -> getDisplay() -> printProductReady(this -> manifest -> getLastSpilled());
         if(isTheFirstRound){
             isTheFirstRound = false;

@@ -60,6 +60,7 @@ Status Manifest::getStatus(){
 }
 
 void Manifest::setStatus(Status status){
+    Serial.println(status);
     this -> status = status;
 }
 

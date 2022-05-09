@@ -144,3 +144,13 @@ void CoffeDisplay::printMakingProcess(Product product, int status){
     display -> setCursor(status + 5, 2);
     display -> write(0);
 }
+
+void CoffeDisplay::sleepDisplay(){
+    this -> display -> clear();
+    this -> display -> noBacklight();
+    this -> lastPrint = LastPrint::SLEEP;
+}
+
+void CoffeDisplay::wakeUpDisplay(){
+    this -> display -> backlight();
+}

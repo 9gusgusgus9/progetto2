@@ -13,6 +13,7 @@ enum LastPrint{
     SELECT_COFFE,
     SELECT_THE,
     SELECT_CHOCOLATE,
+    SLEEP,
     MAKING
 };
 
@@ -32,6 +33,8 @@ public:
     void printTestMessage(int status);
     void printProductAndSugar(Product product, int sugar);
     void printMakingProcess(Product product, int status);
+    void sleepDisplay();
+    void wakeUpDisplay();
 };
 
 #endif

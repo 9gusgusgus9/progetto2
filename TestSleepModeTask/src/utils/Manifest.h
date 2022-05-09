@@ -4,7 +4,7 @@
 #define Tback 5000
 #define TtoTake 40000
 #define TtoTest 180000
-#define TtoSleep 10000
+#define TtoSleep 60000
 #define T_MAX 24.0
 #define T_MIN 17.0
 #define AVIABLE_COFFE 50

@@ -74,10 +74,11 @@ int ProductSelectionTask::sugarPot(){
 }
 
 void ProductSelectionTask::tick(){
-    if(millis() - this -> manifest -> getLastDetection() > TtoSleep){
+    if((millis() - this -> manifest -> getLastDetection()) > TtoSleep){
         this -> manifest -> setStatus(Status::SLEEP_MODE);
     }
     if(manifest -> getStatus() == Status::PRODUCT_SUGAR_SELECTION){
+        this -> manifest -> detection();
         if(this -> bUP -> isPressed()){
             this -> lastPress = millis();
             this -> bUp();
