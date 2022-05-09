@@ -27,7 +27,7 @@ void ProductSpillTask::tick(){
             }
             lastUpdateStatus = millis();
         }
-        if(status > MAX_STATUS){
+        if(status > STATUS_MAX){
             manifest -> setStatus(Status::PRODUCT_READY);
             manifest -> getServo() -> off();
             Serial.println(manifest -> getServo() -> getPosition());

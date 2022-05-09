@@ -98,15 +98,13 @@ void CoffeDisplay::printProductReady(Product product){
         lastPrint = LastPrint::P_READY;
     }
 }
-void CoffeDisplay::printTestMessage(){
+void CoffeDisplay::printTestMessage(int status){
     if(lastPrint != LastPrint::TEST){
         printMessageCentered("", "Test in progress", "please wait", "");
-        for(int cursor = 5; cursor < 15; cursor++){
-            display -> setCursor(cursor, 3);
-            display -> write(0);
-        }
         lastPrint = LastPrint::TEST;
     }
+    display -> setCursor(status + 5, 3);
+    display -> write(0);
 }
 
 void CoffeDisplay::printProductAndSugar(Product product, int sugar){

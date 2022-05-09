@@ -29,7 +29,7 @@ public:
     void printReadyMessage();
     void printAssistanceMessage();
     void printProductReady(Product product);
-    void printTestMessage();
+    void printTestMessage(int status);
     void printProductAndSugar(Product product, int sugar);
     void printMakingProcess(Product product, int status);
 };

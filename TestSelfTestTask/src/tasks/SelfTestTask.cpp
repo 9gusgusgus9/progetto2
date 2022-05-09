@@ -20,19 +20,16 @@ void SelfTestTask::tick(){
         this -> manifest -> setTimeToTest(true);
     }
     if(this -> manifest -> getStatus() == Status::CHECK_TEST){
-        Serial.println("Test start");
-        this -> manifest -> getDisplay() -> printTestMessage();
+        this -> manifest -> getDisplay() -> printTestMessage(status);
         if(this -> selfTest()){
+            this -> status = 0;
             if(this -> testPassed){
                 if(manifest -> isTestBeforeSleep()){
-                    Serial.println("Sleep");
                     this -> manifest -> setStatus(Status::SLEEP_MODE);
                 } else {
-                    Serial.println("Ready");
                     this -> manifest -> setStatus(Status::MACHINE_READY);
                 }
             } else {
-                Serial.println("Assistance");
                 this -> manifest -> setStatus(Status::ASSISTANCE_MODE);
             }
             this -> manifest -> setTimeToTest(false);
@@ -43,6 +40,9 @@ void SelfTestTask::tick(){
 
 bool SelfTestTask::selfTest(){
     if(!this -> motorCompletedTest){
+        if(this -> angleTest %40 == 0){
+            status++;
+        }
         angleTest += increment;
         this -> manifest -> getServo() -> setPosition(angleTest);
         if(this -> angleTest == ANGLE_MIN){
@@ -54,6 +54,7 @@ bool SelfTestTask::selfTest(){
         }
         return false;
     } else {
+        this -> status++;
         this -> motorCompletedTest = false;
         if(this -> manifest -> getTemperature() < T_MIN || this -> manifest -> getTemperature() > T_MAX){
             this -> testPassed = true;
