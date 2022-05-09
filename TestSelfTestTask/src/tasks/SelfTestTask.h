@@ -3,6 +3,9 @@
 #include "Task.h"
 #include "../utils/Manifest.h"
 
+#define ANGLE_MAX 180
+#define ANGLE_MIN 0
+
 class SelfTestTask: public Task{
 public:
     SelfTestTask(Manifest* manifest);
@@ -12,11 +15,13 @@ public:
 
 private:
     Manifest* manifest;
-    bool isTesting;
-    bool passedTest;
-    bool isTested;
     bool isTimeToTest;
     unsigned long lastTest;
+    int increment;
+    int angleTest;
+    bool motorCompletedTest;
+    bool testPassed;
+    int status;
 };
 
 #endif

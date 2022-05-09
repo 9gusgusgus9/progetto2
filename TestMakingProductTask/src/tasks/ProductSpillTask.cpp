@@ -30,7 +30,6 @@ void ProductSpillTask::tick(){
         if(status > MAX_STATUS){
             manifest -> setStatus(Status::PRODUCT_READY);
             manifest -> getServo() -> off();
-            Serial.println(manifest -> getServo() -> getPosition());
             status = 0;
         }
     }

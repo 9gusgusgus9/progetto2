@@ -1,4 +1,5 @@
 #include "Manifest.h"
+#include "Arduino.h"
 
 Manifest::Manifest(){
     this -> servo = new ServoMotorImpl(SERVO);
@@ -54,6 +55,7 @@ Status Manifest::getStatus(){
 }
 
 void Manifest::setStatus(Status status){
+    Serial.println(status);
     this -> status = status;
 }
 

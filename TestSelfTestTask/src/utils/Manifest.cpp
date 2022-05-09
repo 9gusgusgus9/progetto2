@@ -6,6 +6,7 @@ Manifest::Manifest(){
     this -> sensor = new Sensor(ECHO, TRIG);
     this -> temperature = new Temperature(TEMP);
     this -> status = INIT;
+    this -> testToSleep = false;
 }
 
 bool Manifest::isAvailable(Product product){

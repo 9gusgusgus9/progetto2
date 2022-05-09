@@ -104,7 +104,6 @@ void CoffeDisplay::printTestMessage(){
         for(int cursor = 5; cursor < 15; cursor++){
             display -> setCursor(cursor, 3);
             display -> write(0);
-            delay(1000);
         }
         lastPrint = LastPrint::TEST;
     }
