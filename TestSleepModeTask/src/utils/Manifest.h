@@ -4,6 +4,7 @@
 #define Tback 5000
 #define TtoTake 40000
 #define TtoTest 180000
+#define TtoSleep 10000
 #define T_MAX 24.0
 #define T_MIN 17.0
 #define AVIABLE_COFFE 50
@@ -18,11 +19,14 @@
 #define SERVO 9
 #define TEMP 15
 #define Tinit 3000
+#define PIR 5
 
+#include "Arduino.h"
 #include "../manager/ServoMotorImpl.h"
 #include "../manager/CoffeDisplay.h"
 #include "../manager/Sensor.h"
 #include "../manager/Temperature.h"
+#include "../manager/Pir.h"
 
 enum Status{
     INIT,
@@ -59,6 +63,9 @@ class Manifest{
     Temperature* temperature;
     bool isTimeToTest;
     int testCounter;
+    Pir* pir;
+    unsigned long lastDetection;
+
 
 
 public:
@@ -78,6 +85,9 @@ public:
     double getTemperature();
     bool timeToTest();
     void setTimeToTest(bool value);
+    Pir* getPir();
+    void detection();
+    unsigned long getLastDetection();
 };
 
 #endif
