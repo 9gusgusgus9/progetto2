@@ -14,13 +14,9 @@ void wakeUp(){}
 
 void SleepModeTask::tick(){
     if(this -> manifest -> getPir() -> getState() == HIGH){
-        Serial.println("Detected");
         this -> manifest -> detection();
-    } else{
-        Serial.println("Not detected");
     }
     if(this -> manifest -> getStatus() == Status::SLEEP_MODE){
-        Serial.println("Sleep");
         this -> manifest -> getDisplay() -> sleepDisplay();
         enableInterrupt(PIR, &wakeUp, RISING);
         set_sleep_mode(SLEEP_MODE_PWR_DOWN);

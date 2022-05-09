@@ -56,11 +56,13 @@ bool SelfTestTask::selfTest(){
     } else {
         this -> status++;
         this -> motorCompletedTest = false;
-        if(this -> manifest -> getTemperature() < T_MIN || this -> manifest -> getTemperature() > T_MAX){
+        double temp = this -> manifest -> getTemperature();
+        Serial.println(temp);
+        if(temp > T_MIN && temp < T_MAX){
             this -> testPassed = true;
             return true;
         } else {
-            return false;
+            return true;
         }
     }
 }
