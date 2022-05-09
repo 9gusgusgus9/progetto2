@@ -22,6 +22,7 @@
 #include "../manager/ServoMotorImpl.h"
 #include "../manager/CoffeDisplay.h"
 #include "../manager/Sensor.h"
+#include "../manager/Temperature.h"
 
 enum Status{
     INIT,
@@ -51,9 +52,12 @@ class Manifest{
     int chocolateCounter = 0;
     Product lastSpilled;
     int sugar;
+    bool testToSleep;
     Status status;
     ServoMotorImpl* servo;
     Sensor* sensor;
+    Temperature* temperature;
+    bool isTimeToTest;
 
 
 public:
@@ -69,6 +73,10 @@ public:
     ServoMotorImpl* getServo();
     CoffeDisplay* getDisplay();
     Sensor* getSensor();
+    bool isTestBeforeSleep();
+    double getTemperature();
+    bool timeToTest();
+    void setTimeToTest(bool value);
 };
 
 #endif

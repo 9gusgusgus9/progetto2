@@ -98,12 +98,16 @@ void ProductSelectionTask::tick(){
             this-> manifest -> getDisplay() -> printProductAndSugar(actualProduct, sugar);
         }
     } else if(manifest -> getStatus() == Status::MACHINE_READY){
-        if(this -> bUP -> isPressed() || this -> bDOWN -> isPressed() || this -> bMAKE -> isPressed()){
-            manifest -> setStatus(Status::PRODUCT_SUGAR_SELECTION);
-            isActive = true;
-            this -> lastPress = millis();
+        if(this -> manifest -> timeToTest()){
+            this -> manifest -> setStatus(Status::CHECK_TEST);
         } else {
-            this-> manifest -> getDisplay() -> printReadyMessage();
+            if(this -> bUP -> isPressed() || this -> bDOWN -> isPressed() || this -> bMAKE -> isPressed()){
+                manifest -> setStatus(Status::PRODUCT_SUGAR_SELECTION);
+                isActive = true;
+                this -> lastPress = millis();
+            } else {
+                this-> manifest -> getDisplay() -> printReadyMessage();
+            }
         }
         
     }
