@@ -9,6 +9,7 @@ Manifest::Manifest(){
     this -> status = INIT;
     this -> testToSleep = false;
     this -> testCounter = 0;
+    this -> isTimeToTest = false;
 }
 
 bool Manifest::isAvailable(Product product){

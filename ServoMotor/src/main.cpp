@@ -1,4 +1,4 @@
-#define PIN 6
+#define PIN 9
 #include <Arduino.h>
 #include "ServoMotor.h"
 
