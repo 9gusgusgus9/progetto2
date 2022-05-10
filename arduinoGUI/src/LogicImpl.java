@@ -61,15 +61,14 @@ public class LogicImpl implements Logic {
 
     private void acceptData(String data) {
         String[] values = data.split(",");
-        if (values.length < 6) {
+        if (values.length < 4) {
             System.out.println("Missing values");
             return;
         }
-        modalityConsumer.accept(values[0]);
-        coffeeConsumer.accept(values[1]);
-        teaConsumer.accept(values[2]);
-        chocolateConsumer.accept(values[3]);
-        selfCheckConsumer.accept(values[4]);
+        coffeeConsumer.accept(values[0]);
+        teaConsumer.accept(values[1]);
+        chocolateConsumer.accept(values[2]);
+        selfCheckConsumer.accept(values[3]);
     }
 
 }

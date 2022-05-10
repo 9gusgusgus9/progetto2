@@ -4,10 +4,10 @@
 #include "../utils/Manifest.h"
 
 class CommunicatorGUITask: public Task{
-public:
+private:
     Manifest* manifest;
     String lastMsg;
-private:
+public:
     CommunicatorGUITask(Manifest* manifest);
     void init(int period);
     void tick();

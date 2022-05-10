@@ -9,6 +9,7 @@
 #include "tasks/AssistanceModeTask.h"
 #include "tasks/SelfTestTask.h"
 #include "tasks/SleepModeTask.h"
+#include "tasks/CommunicatorGUITask.h"
 
 Manifest* manifest;
 ProductReadyTask* prTask;
@@ -20,6 +21,7 @@ WelcomeMessageTask* welcomeTask;
 AssistanceModeTask* assTask;
 SelfTestTask* testTask;
 SleepModeTask* sleepTask;
+CommunicatorGUITask* commTask;
 
 
 void setup() {
@@ -32,6 +34,7 @@ void setup() {
   assTask = new AssistanceModeTask(manifest);
   testTask = new SelfTestTask(manifest);
   sleepTask = new SleepModeTask(manifest);
+  commTask = new CommunicatorGUITask(manifest);
   scheduler = new Scheduler();
   welcomeTask -> init(100);
   spillTask -> init(100);
@@ -40,6 +43,7 @@ void setup() {
   assTask -> init(100);
   testTask -> init(1000);
   sleepTask -> init(500);
+  commTask -> init(500);
   scheduler -> init();
   scheduler -> addTask(welcomeTask);
   scheduler -> addTask(psTask);
@@ -48,6 +52,7 @@ void setup() {
   scheduler -> addTask(assTask);
   scheduler -> addTask(testTask);
   scheduler -> addTask(sleepTask);
+  scheduler -> addTask(commTask);
 }
 
 void loop() {

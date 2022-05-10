@@ -90,6 +90,7 @@ public:
     unsigned long getLastDetection();
     String msgToSend();
     void refill();
+    void incTest();
 };
 
 #endif

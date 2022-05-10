@@ -61,7 +61,6 @@ Status Manifest::getStatus(){
 }
 
 void Manifest::setStatus(Status status){
-    Serial.println(status);
     this -> status = status;
 }
 
@@ -90,9 +89,6 @@ bool Manifest::timeToTest(){
 }
 
 void Manifest::setTimeToTest(bool value){
-    if(value){
-        testCounter++;
-    }
     this -> isTimeToTest = value;
 }
 
@@ -116,4 +112,8 @@ void Manifest::refill(){
     this -> chocolateCounter = 0;
     this -> coffeCounter = 0;
     this -> theCounter = 0;
+}
+
+void Manifest::incTest(){
+    this -> testCounter++;
 }

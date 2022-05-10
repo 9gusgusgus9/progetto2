@@ -21,19 +21,16 @@ void ProductSpillTask::tick(){
             if(status == 0){
                 manifest -> getServo() -> on();
             }
-            Serial.println(manifest -> getServo() -> getPosition());
             status++;
             if(manifest -> getServo() -> getPosition() > 0){
                 manifest -> getServo() -> setPosition(manifest -> getServo() -> getPosition() - 9);
             }
-            Serial.println(manifest -> getServo() -> getPosition());
             lastUpdateStatus = millis();
         }
         if(status > STATUS_MAX){
             this -> manifest -> detection();
             manifest -> setStatus(Status::PRODUCT_READY);
             manifest -> getServo() -> off();
-            Serial.println(manifest -> getServo() -> getPosition());
             status = 0;
         }
     }
