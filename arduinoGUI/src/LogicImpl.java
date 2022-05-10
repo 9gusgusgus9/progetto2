@@ -70,7 +70,6 @@ public class LogicImpl implements Logic {
         teaConsumer.accept(values[2]);
         chocolateConsumer.accept(values[3]);
         selfCheckConsumer.accept(values[4]);
-        System.out.println("Free memory: " + values[5]);
     }
 
 }
