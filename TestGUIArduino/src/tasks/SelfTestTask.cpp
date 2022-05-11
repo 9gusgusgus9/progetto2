@@ -4,8 +4,8 @@
 SelfTestTask::SelfTestTask(Manifest* manifest){
     this -> manifest = manifest;
     this -> lastTest = millis();
-    this -> increment = -1;
-    this -> angleTest = 180;
+    this -> increment = 1;
+    this -> angleTest = 0;
     this -> motorCompletedTest = false;
     this -> testPassed = false;
     this -> status = 0;
@@ -45,11 +45,11 @@ bool SelfTestTask::selfTest(){
         }
         angleTest += increment;
         this -> manifest -> getServo() -> setPosition(angleTest);
-        if(this -> angleTest == ANGLE_MIN){
-            this -> increment = 1;
-        }
         if(this -> angleTest == ANGLE_MAX){
             this -> increment = -1;
+        }
+        if(this -> angleTest == ANGLE_MIN){
+            this -> increment = 1;
             this -> motorCompletedTest = true;
         }
         return false;

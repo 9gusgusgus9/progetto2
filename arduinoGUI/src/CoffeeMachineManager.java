@@ -20,11 +20,12 @@ public class CoffeeMachineManager {
         final Consumer<String> selfCheckConsumer = selfCheckLabel::setText;
 
         //Logic logic = new LogicImpl(modalityConsumer, coffeeConsumer, teaConsumer, chocolateConsumer, selfCheckConsumer);
-
+        String[] options = {"COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8"};
+        
         //Creating the Frame
         JFrame frame = new JFrame("Coffer Machine Manager");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+        frame.setSize(200, 100);
 
         // SOUTH Panel
         JPanel southPanel = new JPanel();
@@ -32,16 +33,13 @@ public class CoffeeMachineManager {
 
         JButton recover = new JButton("Recover");
 
-        southPanel.add(refill);
-        southPanel.add(recover);
-
         // CENTER Panel
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.PAGE_AXIS));
 
         // Modality
         JPanel modalityPanel = new JPanel();
-        modalityPanel.add(new JLabel("Modality: "));
+        modalityPanel.add(new JLabel("State: "));
         modalityPanel.add(modalityLabel);
 
         // Beverage
@@ -61,49 +59,43 @@ public class CoffeeMachineManager {
         JPanel selfCheckPanel = new JPanel();
         selfCheckPanel.add(new JLabel("Self Check: "));
         selfCheckPanel.add(selfCheckLabel);
-
-        // adding panel to center
         centerPanel.add(modalityPanel);
-
-        final JSeparator separator1 = new JSeparator();
-        separator1.setBackground(Color.black);
-        centerPanel.add(separator1);
-
         centerPanel.add(coffeePanel);
         centerPanel.add(teaPanel);
         centerPanel.add(chocolatePanel);
-
-        final JSeparator separator2 = new JSeparator();
-        separator1.setBackground(Color.black);
-        centerPanel.add(separator2);
-
         centerPanel.add(selfCheckPanel);
+        
 
+        southPanel.add(refill);
+        southPanel.add(recover);
 
 
         // EAST Panel
-        JPanel eastPanel = new JPanel();
-        eastPanel.setLayout(new BoxLayout(eastPanel, BoxLayout.PAGE_AXIS));
+        JPanel selectionPanel = new JPanel();
+        selectionPanel.setLayout(new BoxLayout(selectionPanel, BoxLayout.PAGE_AXIS));
         JTextField textField = new JTextField();
+        JComboBox<String> choose = new JComboBox<>(options);
         JButton startButton = new JButton("Start");
         startButton.addActionListener(e -> {
             try {
-                Logic logic = new LogicImpl(textField.getText(), modalityConsumer, coffeeConsumer, teaConsumer, chocolateConsumer, selfCheckConsumer);
+                Logic logic = new LogicImpl(choose.getItemAt(choose.getSelectedIndex()), modalityConsumer, coffeeConsumer, teaConsumer, chocolateConsumer, selfCheckConsumer);
                 refill.addActionListener(ev -> logic.onRefill());
                 recover.addActionListener(ev -> logic.onRecover());
+                frame.getContentPane().add(BorderLayout.SOUTH, southPanel);
+                frame.getContentPane().add(BorderLayout.CENTER, centerPanel);
+                frame.setSize(300, 200);
+                frame.getContentPane().remove(selectionPanel);
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
         });
 
-        eastPanel.add(textField);
-        eastPanel.add(startButton);
+        selectionPanel.add(choose);
+        selectionPanel.add(startButton);
 
 
         //Adding Components to the frame.
-        frame.getContentPane().add(BorderLayout.SOUTH, southPanel);
-        frame.getContentPane().add(BorderLayout.CENTER, centerPanel);
-        frame.getContentPane().add(BorderLayout.EAST, eastPanel);
+        frame.getContentPane().add(BorderLayout.CENTER, selectionPanel);
         frame.setVisible(true);
     }
 

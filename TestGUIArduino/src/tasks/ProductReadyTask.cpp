@@ -20,7 +20,7 @@ void ProductReadyTask::tick(){
         if(this -> manifest -> getSensor() -> getDistance() >= 0.40 || millis() - timeFromReady > TtoTake){
             isTheFirstRound = true;
             this -> manifest -> getServo() -> on();
-            this -> manifest -> getServo() -> setPosition(180);
+            this -> manifest -> getServo() -> setPosition(0);
             if(this -> manifest -> someProductAvailable()){
                 this -> manifest -> setStatus(Status::MACHINE_READY);
             } else {

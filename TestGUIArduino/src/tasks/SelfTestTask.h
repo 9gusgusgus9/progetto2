@@ -4,7 +4,7 @@
 #include "../utils/Manifest.h"
 
 #define ANGLE_MAX 180
-#define ANGLE_MIN 9
+#define ANGLE_MIN 0
 
 class SelfTestTask: public Task{
 public:

@@ -2,8 +2,9 @@
 #define __MANIFEST__
 
 #define Tback 5000
+#define Tmake 10000
 #define TtoTake 40000
-#define TtoTest 180000
+#define TtoTest 10000
 #define TtoSleep 60000
 #define T_MAX 24.0
 #define T_MIN 17.0

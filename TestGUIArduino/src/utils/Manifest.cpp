@@ -105,7 +105,17 @@ unsigned long Manifest::getLastDetection(){
 }
 
 String Manifest::msgToSend(){
-    return "" + String(AVIABLE_COFFE - this -> coffeCounter) + "," + String(AVIABLE_THE - this -> theCounter) + "," + String(AVIABLE_CHOCOLATE - this -> chocolateCounter) + "," + String(this -> testCounter);
+    String state;
+    if(getStatus() == Status::MACHINE_READY){
+        state = "IDLE";
+    } else if(getStatus() == Status::ASSISTANCE_MODE){
+        state = "ASSISTANCE";
+    } else if(getStatus() == Status::CHECK_TEST){
+        state = "TESTING";
+    } else {
+        state = "WORKING";
+    }
+    return "" + state + "," + String(AVIABLE_COFFE - this -> coffeCounter) + "," + String(AVIABLE_THE - this -> theCounter) + "," + String(AVIABLE_CHOCOLATE - this -> chocolateCounter) + "," + String(this -> testCounter);
 }
 
 void Manifest::refill(){
