@@ -12,7 +12,6 @@ void WelcomeMessageTask::init(int period){
 
 void WelcomeMessageTask::tick(){
     if(manifest -> getStatus() == Status::INIT){
-        this -> manifest -> detection();
         if(millis() - startTime < Tinit){
             manifest -> getDisplay() -> printWelcomeMessage();
         } else {

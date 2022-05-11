@@ -15,7 +15,6 @@ void ProductSpillTask::init(int period){
 
 void ProductSpillTask::tick(){
     if(manifest -> getStatus() == Status::MAKING_PROCESS){
-        this -> manifest -> detection();
         manifest -> getDisplay() -> printMakingProcess(this -> manifest -> getLastSpilled(), status/2);
         if(millis() - lastUpdateStatus > Tmake/20){
             if(status == 0){

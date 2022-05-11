@@ -74,9 +74,6 @@ int ProductSelectionTask::sugarPot(){
 }
 
 void ProductSelectionTask::tick(){
-    if((millis() - this -> manifest -> getLastDetection()) > TtoSleep){
-        this -> manifest -> setStatus(Status::SLEEP_MODE);
-    }
     if(manifest -> getStatus() == Status::PRODUCT_SUGAR_SELECTION){
         this -> manifest -> detection();
         if(this -> bUP -> isPressed()){
@@ -102,6 +99,9 @@ void ProductSelectionTask::tick(){
             this-> manifest -> getDisplay() -> printProductAndSugar(actualProduct, sugar);
         }
     } else if(manifest -> getStatus() == Status::MACHINE_READY){
+        if((millis() - this -> manifest -> getLastDetection()) > TtoSleep){
+            this -> manifest -> setStatus(Status::SLEEP_MODE);
+        }
         if(this -> manifest -> timeToTest()){
             this -> manifest -> setStatus(Status::CHECK_TEST);
         } else {

@@ -10,6 +10,7 @@ Manifest::Manifest(){
     this -> testToSleep = false;
     this -> testCounter = 0;
     this -> isTimeToTest = false;
+    this -> lastDetection = millis();
 }
 
 bool Manifest::isAvailable(Product product){
@@ -61,6 +62,9 @@ Status Manifest::getStatus(){
 }
 
 void Manifest::setStatus(Status status){
+    if(status == Status::MACHINE_READY){
+        this -> detection();
+    }
     this -> status = status;
 }
 
@@ -112,6 +116,8 @@ String Manifest::msgToSend(){
         state = "ASSISTANCE";
     } else if(getStatus() == Status::CHECK_TEST){
         state = "TESTING";
+    } else if(getStatus() == Status::INIT){
+        state = "INITIALIZING";
     } else {
         state = "WORKING";
     }

@@ -59,6 +59,7 @@ public class CoffeeMachineManager {
         JPanel selfCheckPanel = new JPanel();
         selfCheckPanel.add(new JLabel("Self Check: "));
         selfCheckPanel.add(selfCheckLabel);
+        
         centerPanel.add(modalityPanel);
         centerPanel.add(coffeePanel);
         centerPanel.add(teaPanel);
