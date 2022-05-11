@@ -24,7 +24,7 @@ void ProductReadyTask::tick(){
             if(this -> manifest -> someProductAvailable()){
                 this -> manifest -> setStatus(Status::MACHINE_READY);
             } else {
-                this -> manifest -> setStatus(Status::ASSISTANCE_MODE);
+                this -> manifest -> setStatus(Status::ASSISTANCE_REFILL_REQUIRED);
             }
             
         }

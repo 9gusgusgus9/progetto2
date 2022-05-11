@@ -29,6 +29,7 @@ public:
     void printWelcomeMessage();
     void printReadyMessage();
     void printAssistanceMessage();
+    void printAssistanceRefillMessage();
     void printProductReady(Product product);
     void printTestMessage(int status);
     void printProductAndSugar(Product product, int sugar);

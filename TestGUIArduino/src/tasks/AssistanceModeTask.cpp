@@ -9,7 +9,14 @@ void AssistanceModeTask::init(int period){
 }
 
 void AssistanceModeTask::tick(){
-    if(this -> manifest -> getStatus() == Status::ASSISTANCE_MODE){
-        this -> manifest -> getDisplay() -> printAssistanceMessage();
+    if(this -> manifest ->someProductAvailable()){
+        if(this -> manifest -> getStatus() == Status::ASSISTANCE_MODE){
+            this -> manifest -> getDisplay() -> printAssistanceMessage();
+        }
+    } else {
+        if(this -> manifest -> getStatus() == Status::ASSISTANCE_REFILL_REQUIRED){
+            this -> manifest -> getDisplay() -> printAssistanceMessage();
+        }
     }
+    
 }

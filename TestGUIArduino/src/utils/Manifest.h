@@ -8,9 +8,9 @@
 #define TtoSleep 60000
 #define T_MAX 35.0
 #define T_MIN 17.0
-#define AVIABLE_COFFE 50
-#define AVIABLE_TEA 50
-#define AVIABLE_CHOCOLATE 50
+#define AVIABLE_COFFE 1
+#define AVIABLE_TEA 1
+#define AVIABLE_CHOCOLATE 1
 #define BUP 4
 #define BDOWN 2
 #define BMAKE 3
@@ -37,6 +37,7 @@ enum Status{
     PRODUCT_READY,
     COME_BACK,
     ASSISTANCE_MODE,
+    ASSISTANCE_REFILL_REQUIRED,
     CHECK_TEST,
     SLEEP_MODE
 };

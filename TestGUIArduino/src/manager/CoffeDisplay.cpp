@@ -86,7 +86,14 @@ void CoffeDisplay::printReadyMessage(){
 
 void CoffeDisplay::printAssistanceMessage(){
     if(lastPrint != LastPrint::ASSISTANCE){
-        printMessageCentered("", "Assistance required", "manage with GUI", "");
+        printMessageCentered("", "Assistance required", "recover with GUI", "");
+        lastPrint = LastPrint::ASSISTANCE;
+    }
+}
+
+void CoffeDisplay::printAssistanceRefillMessage(){
+    if(lastPrint != LastPrint::ASSISTANCE){
+        printMessageCentered("", "Assistance required", "refill the machine...", "");
         lastPrint = LastPrint::ASSISTANCE;
     }
 }
