@@ -30,7 +30,7 @@ bool Manifest::someProductAvailable(){
     return isAvailable(COFFE) || isAvailable(TEA) || isAvailable(CHOCOLATE);
 }
 
-void Manifest::setLastSpilled(Product product){
+void Manifest::setLastPouredOut(Product product){
     switch(product){
         case COFFE:
             coffeCounter++;
@@ -42,11 +42,11 @@ void Manifest::setLastSpilled(Product product){
             chocolateCounter++;
             break;
     }
-    lastSpilled = product;
+    lastPoured = product;
 }
 
-Product Manifest::getLastSpilled(){
-    return this -> lastSpilled;
+Product Manifest::getLastPouredOut(){
+    return this -> lastPoured;
 }
 
 void Manifest::setSugar(int sugar){

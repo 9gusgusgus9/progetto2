@@ -1,11 +1,11 @@
-#include "ProductSpillTask.h"
+#include "ProductPourTask.h"
 #include "Arduino.h"
 
-ProductSpillTask::ProductSpillTask(Manifest* manifest){
+ProductPourTask::ProductPourTask(Manifest* manifest){
     this -> manifest = manifest;
 }
 
-void ProductSpillTask::init(int period){
+void ProductPourTask::init(int period){
     Task::init(period);
     this -> manifest -> getServo() -> on();
     this -> manifest -> getServo() -> setPosition(0);
@@ -13,9 +13,9 @@ void ProductSpillTask::init(int period){
     this -> lastUpdateStatus = millis();
 }
 
-void ProductSpillTask::tick(){
+void ProductPourTask::tick(){
     if(manifest -> getStatus() == Status::MAKING_PROCESS){
-        manifest -> getDisplay() -> printMakingProcess(this -> manifest -> getLastSpilled(), status/2);
+        manifest -> getDisplay() -> printMakingProcess(this -> manifest -> getLastPouredOut(), status/2);
         if(millis() - lastUpdateStatus > Tmake/20){
             if(status == 0){
                 manifest -> getServo() -> on();

@@ -8,9 +8,9 @@
 #define TtoSleep 60000
 #define T_MAX 35.0
 #define T_MIN 17.0
-#define AVIABLE_COFFE 1
-#define AVIABLE_TEA 1
-#define AVIABLE_CHOCOLATE 1
+#define AVIABLE_COFFE 50
+#define AVIABLE_TEA 50
+#define AVIABLE_CHOCOLATE 50
 #define BUP 4
 #define BDOWN 2
 #define BMAKE 3
@@ -56,7 +56,7 @@ class Manifest{
     int coffeCounter = 0;
     int teaCounter = 0;
     int chocolateCounter = 0;
-    Product lastSpilled;
+    Product lastPoured;
     int sugar;
     bool testToSleep;
     Status status;
@@ -74,8 +74,8 @@ public:
     Manifest();
     bool isAvailable(Product prod);
     bool someProductAvailable();
-    void setLastSpilled(Product prod);
-    Product getLastSpilled();
+    void setLastPouredOut(Product prod);
+    Product getLastPouredOut();
     void setSugar(int sugar);
     int getSugar();
     Status getStatus();

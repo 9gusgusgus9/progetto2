@@ -6,10 +6,10 @@
 #include "Task.h"
 #include "../utils/Manifest.h"
 
-class ProductSpillTask: public Task{
+class ProductPourTask: public Task{
 
 public:
-    ProductSpillTask(Manifest* manifest);
+    ProductPourTask(Manifest* manifest);
     void init(int period);
     void tick();
 

@@ -62,6 +62,9 @@ public class LogicImpl implements Logic {
     private void acceptData(String data) {
         String[] values = data.split(",");
         if (values.length < 5) {
+        	/*for(int c = 0; c < values.length; c++) {
+        		System.out.println(values[c]);
+        	}*/
             System.out.println("Missing values");
             return;
         }

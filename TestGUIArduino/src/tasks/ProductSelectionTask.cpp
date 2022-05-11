@@ -59,7 +59,7 @@ void ProductSelectionTask::bDown(){
 
 void ProductSelectionTask::bMake(){
     this -> isActive = false;
-    manifest -> setLastSpilled(actualProduct);
+    manifest -> setLastPouredOut(actualProduct);
     if(!this -> manifest -> isAvailable(actualProduct)){
         if(this -> manifest -> someProductAvailable()){
             this -> bDown();

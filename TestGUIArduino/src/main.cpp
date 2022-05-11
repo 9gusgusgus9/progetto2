@@ -3,7 +3,7 @@
 #include "tasks/ProductReadyTask.h"
 #include "tasks/ProductSelectionTask.h"
 #include "utils/Scheduler.h"
-#include "tasks/ProductSpillTask.h"
+#include "tasks/ProductPourTask.h"
 #include "manager/ServoMotorImpl.h"
 #include "tasks/WelcomeMessageTask.h"
 #include "tasks/AssistanceModeTask.h"
@@ -14,7 +14,7 @@
 Manifest* manifest;
 ProductReadyTask* prTask;
 ProductSelectionTask* psTask;
-ProductSpillTask* spillTask;
+ProductPourTask* pourTask;
 Scheduler* scheduler;
 ServoMotorImpl* servo;
 WelcomeMessageTask* welcomeTask;
@@ -29,7 +29,7 @@ void setup() {
   manifest = new Manifest();
   psTask = new ProductSelectionTask(manifest);
   prTask = new ProductReadyTask(manifest);
-  spillTask = new ProductSpillTask(manifest);
+  pourTask = new ProductPourTask(manifest);
   welcomeTask = new WelcomeMessageTask(manifest);
   assTask = new AssistanceModeTask(manifest);
   testTask = new SelfTestTask(manifest);
@@ -37,7 +37,7 @@ void setup() {
   commTask = new CommunicatorGUITask(manifest);
   scheduler = new Scheduler();
   welcomeTask -> init(100);
-  spillTask -> init(100);
+  pourTask -> init(100);
   psTask -> init(100);
   prTask -> init(100);
   assTask -> init(100);
@@ -48,7 +48,7 @@ void setup() {
   scheduler -> addTask(welcomeTask);
   scheduler -> addTask(psTask);
   scheduler -> addTask(prTask);
-  scheduler -> addTask(spillTask);
+  scheduler -> addTask(pourTask);
   scheduler -> addTask(assTask);
   scheduler -> addTask(testTask);
   scheduler -> addTask(sleepTask);
