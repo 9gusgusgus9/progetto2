@@ -109,7 +109,7 @@ void CoffeDisplay::printTestMessage(int status){
 
 void CoffeDisplay::printProductAndSugar(Product product, int sugar){
     if((lastPrint != LastPrint::SELECT_COFFE && product == Product::COFFE)
-        || (lastPrint != LastPrint::SELECT_THE && product == Product::THE)
+        || (lastPrint != LastPrint::SELECT_TEA && product == Product::TEA)
         || (lastPrint != LastPrint::SELECT_CHOCOLATE && product == Product::CHOCOLATE)){
             String prod = toString(product);
             printMessageGiustify("Product:", prod, "Sugar:", "");
@@ -120,8 +120,8 @@ void CoffeDisplay::printProductAndSugar(Product product, int sugar){
                 case Product::CHOCOLATE:
                     lastPrint = LastPrint::SELECT_CHOCOLATE;
                     break;
-                case Product::THE:
-                    lastPrint = LastPrint::SELECT_THE;
+                case Product::TEA:
+                    lastPrint = LastPrint::SELECT_TEA;
                     break;
             }
     }

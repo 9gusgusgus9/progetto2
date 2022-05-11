@@ -17,8 +17,8 @@ bool Manifest::isAvailable(Product product){
     switch(product){
         case COFFE:
             return AVIABLE_COFFE - coffeCounter > 0;
-        case THE:
-            return AVIABLE_THE - theCounter > 0;
+        case TEA:
+            return AVIABLE_TEA - teaCounter > 0;
         case CHOCOLATE:
             return AVIABLE_CHOCOLATE - chocolateCounter > 0;
         default: 
@@ -27,7 +27,7 @@ bool Manifest::isAvailable(Product product){
 }
 
 bool Manifest::someProductAvailable(){
-    return isAvailable(COFFE) || isAvailable(THE) || isAvailable(CHOCOLATE);
+    return isAvailable(COFFE) || isAvailable(TEA) || isAvailable(CHOCOLATE);
 }
 
 void Manifest::setLastSpilled(Product product){
@@ -35,8 +35,8 @@ void Manifest::setLastSpilled(Product product){
         case COFFE:
             coffeCounter++;
             break;
-        case THE:
-            theCounter++;
+        case TEA:
+            teaCounter++;
             break;
         case CHOCOLATE:
             chocolateCounter++;
@@ -121,13 +121,13 @@ String Manifest::msgToSend(){
     } else {
         state = "WORKING";
     }
-    return "" + state + "," + String(AVIABLE_COFFE - this -> coffeCounter) + "," + String(AVIABLE_THE - this -> theCounter) + "," + String(AVIABLE_CHOCOLATE - this -> chocolateCounter) + "," + String(this -> testCounter);
+    return "" + state + "," + String(AVIABLE_COFFE - this -> coffeCounter) + "," + String(AVIABLE_TEA - this -> teaCounter) + "," + String(AVIABLE_CHOCOLATE - this -> chocolateCounter) + "," + String(this -> testCounter);
 }
 
 void Manifest::refill(){
     this -> chocolateCounter = 0;
     this -> coffeCounter = 0;
-    this -> theCounter = 0;
+    this -> teaCounter = 0;
 }
 
 void Manifest::incTest(){

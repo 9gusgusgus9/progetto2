@@ -24,11 +24,11 @@ void ProductSelectionTask::bUp(){
         case COFFE:
             actualProduct = CHOCOLATE;
             break;
-        case THE:
+        case TEA:
             actualProduct = COFFE;
             break;
         case CHOCOLATE:
-            actualProduct = THE;
+            actualProduct = TEA;
             break;
     }
     if(!this -> manifest -> isAvailable(actualProduct)){
@@ -41,9 +41,9 @@ void ProductSelectionTask::bUp(){
 void ProductSelectionTask::bDown(){
     switch(actualProduct){
         case COFFE:
-            actualProduct = THE;
+            actualProduct = TEA;
             break;
-        case THE:
+        case TEA:
             actualProduct = CHOCOLATE;
             break;
         case CHOCOLATE:

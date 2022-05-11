@@ -9,7 +9,7 @@
 #define T_MAX 35.0
 #define T_MIN 17.0
 #define AVIABLE_COFFE 50
-#define AVIABLE_THE 50
+#define AVIABLE_TEA 50
 #define AVIABLE_CHOCOLATE 50
 #define BUP 4
 #define BDOWN 2
@@ -44,7 +44,7 @@ enum Status{
 inline const char* toString(Product prod){
     switch(prod){
         case COFFE: return "Coffe";
-        case THE: return "The";
+        case TEA: return "Tea";
         case CHOCOLATE: return "Chocolate";
         default: return "";
     }
@@ -53,7 +53,7 @@ inline const char* toString(Product prod){
 class Manifest{
     CoffeDisplay* display;
     int coffeCounter = 0;
-    int theCounter = 0;
+    int teaCounter = 0;
     int chocolateCounter = 0;
     Product lastSpilled;
     int sugar;

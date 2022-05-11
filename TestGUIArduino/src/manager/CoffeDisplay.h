@@ -11,7 +11,7 @@ enum LastPrint{
     P_READY,
     TEST,
     SELECT_COFFE,
-    SELECT_THE,
+    SELECT_TEA,
     SELECT_CHOCOLATE,
     SLEEP,
     MAKING
